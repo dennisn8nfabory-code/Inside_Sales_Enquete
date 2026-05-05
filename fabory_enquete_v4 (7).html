@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FABORY – Inside Sales Opleidingsenquête</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#003087; --red-dark:#002060; --red-light:#E8F2FA;
+  --black:#111; --gray-700:#444; --gray-500:#777; --gray-300:#ccc; --gray-100:#f4f4f4;
+  --white:#fff; --border:#e0e0e0; --radius:6px; --shadow:0 2px 12px rgba(0,0,0,.08);
+  --c4c-dark:#0a3a6e;--c4c-mid:#1a8fcc;--c4c-light:#e3f4fc;
+  --sap-dark:#003366;--sap-mid:#0066b3;--sap-sand:#f0ede4;--sap-gold:#f5a623;
+  --dig-dark:#003070;--dig-mid:#004F9F;--dig-light:#E8F2FA;
+  --proc-dark:#1b4d2e;--proc-mid:#2e7d4f;--proc-light:#eaf4ee;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:#f0f0ef;color:var(--black);min-height:100vh}
+.site-header{background:#003087;display:flex;align-items:stretch}
+.header-content{display:flex;align-items:stretch;flex:1}
+.header-logo-zone{background:white;padding:10px 20px;display:flex;align-items:center}
+.header-text-zone{padding:14px 24px;display:flex;align-items:center;gap:14px;flex:1}
+
+
+.header-div{width:1px;height:28px;background:rgba(255,255,255,.3)}
+.header-sub{color:rgba(255,255,255,.8);font-size:12px;font-weight:400;letter-spacing:.5px;text-transform:uppercase}
+.progress-bar-wrap{background:var(--white);border-bottom:1px solid var(--border);padding:0 32px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.progress-inner{max-width:820px;margin:0 auto;padding:12px 0;display:flex;align-items:center;gap:14px}
+.progress-label{font-size:11px;color:var(--gray-500);font-weight:500;white-space:nowrap}
+.prog-bg{flex:1;height:4px;background:var(--gray-100);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:#0057B8;border-radius:2px;transition:width .4s ease;width:0%}
+.prog-pct{font-size:11px;color:#003087;font-weight:600;min-width:30px;text-align:right}
+.main-wrap{max-width:820px;margin:0 auto;padding:32px 16px 80px}
+.intro-card{background:var(--white);border-radius:var(--radius);border-left:4px solid #003087;padding:24px 28px;margin-bottom:28px;box-shadow:var(--shadow)}
+.intro-card h1{font-family:'DM Serif Display',serif;font-size:26px;margin-bottom:10px;line-height:1.2}
+.intro-card p{font-size:13px;color:var(--gray-700);line-height:1.7;margin-bottom:6px}
+.intro-meta{display:flex;gap:16px;margin-top:14px;flex-wrap:wrap}
+.intro-meta-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray-500);font-weight:500}
+.intro-meta-item .dot{width:6px;height:6px;border-radius:50%;background:#003087}
+.section{margin-bottom:24px}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.section-number{width:34px;height:34px;background:#003087;color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;flex-shrink:0}
+.section-title-text{font-family:'DM Serif Display',serif;font-size:19px}
+.card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;margin-bottom:10px}
+.personal-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px}
+@media(max-width:560px){.personal-grid{grid-template-columns:1fr}}
+.field-group{display:flex;flex-direction:column;gap:5px}
+.field-group.full{grid-column:1/-1}
+label{font-size:11px;font-weight:600;color:var(--gray-700);text-transform:uppercase;letter-spacing:.4px}
+input[type=text],input[type=email],select,textarea{border:1.5px solid var(--border);border-radius:var(--radius);padding:9px 11px;font-size:13px;font-family:'DM Sans',sans-serif;color:var(--black);background:var(--white);transition:border-color .2s;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:#003087}
+textarea{resize:vertical;min-height:72px}
+.trans-table{width:100%;border-collapse:collapse;margin-bottom:6px}
+.trans-table tr{border-bottom:1px solid rgba(0,0,0,.08)}
+.trans-table tr:last-child{border-bottom:none}
+.trans-table tr:nth-child(even){background:rgba(255,255,255,.6)}
+.trans-table tr:nth-child(odd){background:rgba(0,51,102,.04)}
+.trans-code{font-size:10px;font-weight:700;color:var(--sap-dark);font-family:monospace;background:rgba(0,51,102,.12);padding:2px 5px;border-radius:3px;white-space:nowrap}
+.trans-desc{font-size:11px;color:var(--gray-700)}
+.trans-stars{display:flex;gap:1px}
+.trans-star-btn{background:none;border:none;font-size:15px;cursor:pointer;color:var(--gray-300);padding:1px;line-height:1;transition:transform .1s}
+.trans-star-btn:hover{transform:scale(1.15)}
+.trans-star-btn.active{color:#f5a623}
+.trans-extra-btn{border:1.5px solid var(--border);background:var(--white);color:var(--gray-500);padding:2px 6px;border-radius:10px;font-size:9px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s;font-weight:600;white-space:nowrap}
+.trans-extra-btn:hover{border-color:var(--gray-500);color:var(--gray-700)}
+.trans-extra-btn.selected-unknown{background:#e3f2fd;border-color:#1565c0;color:#1565c0}
+.trans-extra-btn.selected-nvt{background:var(--gray-100);border-color:var(--gray-500);color:var(--gray-700)}
+.trans-actions{display:flex;align-items:center;gap:4px}
+
+.cat-header{background:var(--black);color:var(--white);padding:12px 20px;display:flex;align-items:center;gap:8px}
+.cat-header.mif{background:var(--red)}
+.cat-header.mif ~ div .subcat-header{background:var(--red-dark)}
+.cat-header.c4c{background:linear-gradient(135deg,var(--c4c-dark) 0%,var(--c4c-mid) 100%)}
+.cat-header.c4c ~ div .subcat-header{background:var(--c4c-dark)}
+.cat-header.sap{background:linear-gradient(135deg,var(--sap-dark) 0%,var(--sap-mid) 100%);border-bottom:3px solid var(--sap-gold)}
+.cat-header.sap ~ div .subcat-header{background:var(--sap-dark)}
+.cat-header.sap ~ div .subcat-header .subcat-label::before{content:'⬡ ';color:var(--sap-gold);font-size:10px}
+.cat-header.dig{background:linear-gradient(135deg,var(--dig-dark) 0%,var(--dig-mid) 100%)}
+.cat-header.dig ~ div .subcat-header{background:var(--dig-dark)}
+.cat-header.proc{background:linear-gradient(135deg,var(--proc-dark) 0%,var(--proc-mid) 100%)}
+.cat-header.proc ~ div .subcat-header{background:var(--proc-dark)}
+.cat-header h2{font-family:'DM Serif Display',serif;font-size:16px;font-weight:normal}
+.cat-tag{margin-left:auto;background:rgba(255,255,255,.12);padding:2px 9px;border-radius:20px;font-size:10px;color:#ccc}
+.subcat-block{border-bottom:1px solid var(--border)}
+.subcat-block:last-child{border-bottom:none}
+.subcat-header{padding:10px 20px;display:flex;align-items:center;gap:8px;background:var(--black);margin-top:1px}
+.subcat-label{font-size:13px;font-weight:600;color:var(--white);letter-spacing:.2px}
+.subcat-tag{font-size:10px;color:#bbb;background:rgba(255,255,255,.12);padding:2px 8px;border-radius:10px}
+.subcat-body{padding:12px 20px 16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:560px){.subcat-body{grid-template-columns:1fr}}
+.subcat-field{display:flex;flex-direction:column;gap:7px}
+.subcat-field.full{grid-column:1/-1}
+.subcat-field label{font-size:10px;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:.4px}
+.star-display{display:flex;gap:4px}
+.star-btn{background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray-300);padding:1px;transition:transform .1s;line-height:1}
+.star-btn:hover{transform:scale(1.12)}
+.star-btn.active{color:#f5a623}
+.star-label-text{font-size:11px;color:var(--gray-500);min-height:15px}
+.need-buttons{display:flex;flex-wrap:wrap;gap:5px}
+.need-btn{border:1.5px solid var(--border);background:var(--white);color:var(--gray-700);padding:5px 10px;border-radius:20px;font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .15s;font-weight:500}
+.need-btn:hover{border-color:#003087;color:#003087}
+.need-btn.selected{background:#003087;border-color:#003087;color:var(--white)}
+.simple-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px;margin-bottom:10px}
+.simple-card h3{font-size:13px;font-weight:600;color:var(--black);margin-bottom:12px}
+.checkbox-group{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:480px){.checkbox-group{grid-template-columns:1fr}}
+.check-item{display:flex;align-items:center;gap:7px;padding:7px 10px;border:1.5px solid var(--border);border-radius:var(--radius);cursor:pointer;font-size:12px;color:var(--gray-700);user-select:none;transition:all .15s}
+.check-item .check-box{width:15px;height:15px;border:2px solid var(--gray-300);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.check-item.checked{border-color:#003087;background:#E8F2FA;color:#002060}
+.check-item.checked .check-box{background:#003087;border-color:#003087}
+.check-item.checked .check-box::after{content:'✓';font-size:9px;font-weight:700;color:white}
+.urgency-group{display:flex;gap:7px;flex-wrap:wrap}
+.urgency-btn{padding:7px 18px;border:1.5px solid var(--border);border-radius:4px;background:var(--white);font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s;color:var(--gray-700)}
+.urgency-btn.low.selected{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.urgency-btn.medium.selected{background:var(--orange-light);border-color:#ff9800;color:var(--orange)}
+.urgency-btn.high.selected{background:#fdeaed;border-color:#C8102E;color:#9e0c23}
+.voorkeur-group{display:flex;gap:8px;flex-wrap:wrap}
+.voorkeur-btn{padding:9px 16px;border:1.5px solid var(--border);border-radius:var(--radius);background:var(--white);font-family:'DM Sans',sans-serif;font-size:12px;cursor:pointer;transition:all .15s;color:var(--gray-700)}
+.voorkeur-btn.selected{border-color:#003087;background:#E8F2FA;color:#002060;font-weight:600}
+.submit-section{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px 28px;border-top:3px solid #003087;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.submit-info{font-size:12px;color:var(--gray-500)}
+.submit-info strong{color:var(--black)}
+.btn-submit{background:#003087;color:var(--white);border:none;padding:13px 28px;border-radius:var(--radius);font-size:14px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:background .2s,transform .1s}
+.btn-submit:hover{background:#002060;transform:translateY(-1px)}
+.btn-submit:disabled{background:var(--gray-300);cursor:not-allowed;transform:none}
+.error-msg{display:none;background:#E8F2FA;border:1.5px solid #003087;color:#002060;padding:10px 14px;border-radius:var(--radius);font-size:12px;margin-top:10px}
+.error-msg.visible{display:block}
+.success-screen{display:none;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:52px 36px;text-align:center}
+.success-screen.visible{display:block}
+.success-icon{font-size:52px;margin-bottom:16px}
+.success-screen h2{font-family:'DM Serif Display',serif;font-size:24px;margin-bottom:10px}
+.success-screen p{color:var(--gray-500);font-size:13px;line-height:1.6}
+.saving-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:white;font-size:15px;font-weight:500}
+.saving-overlay.visible{display:flex}
+/* WIZARD */
+.wizard-page{display:none}
+.wizard-page.active{display:block}
+.wizard-nav{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;display:flex;align-items:center;gap:12px;margin-top:16px;position:sticky;bottom:16px;z-index:50}
+.btn-prev,.btn-next{border:none;padding:11px 24px;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-prev{background:var(--gray-100);color:var(--gray-700)}
+.btn-prev:hover{background:var(--gray-300)}
+.btn-prev:disabled{opacity:.35;cursor:not-allowed}
+.btn-next{background:#003087;color:var(--white)}
+.btn-next:hover{background:#002060}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+.wizard-steps{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.wstep{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;opacity:.45;transition:opacity .2s}
+.wstep.done{opacity:.7}
+.wstep.active{opacity:1}
+.wstep-dot{width:28px;height:28px;border-radius:50%;background:var(--gray-100);border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gray-500);transition:all .2s}
+.wstep.done .wstep-dot{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.wstep.active .wstep-dot{background:#003087;border-color:#003087;color:var(--white)}
+.wstep-label{font-size:9px;color:var(--gray-500);font-weight:500;text-align:center;max-width:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wstep.active .wstep-label{color:#003087;font-weight:700}
+.spinner{width:36px;height:36px;border:3px solid rgba(255,255,255,.3);border-top-color:white;border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.intro-page-card{background:var(--white);border-radius:var(--radius);box-shadow:0 4px 24px rgba(0,0,0,.1);padding:48px 52px;max-width:680px;margin:40px auto;border-top:4px solid #003087}
+.intro-page-title{font-family:'DM Serif Display',serif;font-size:28px;color:var(--black);margin-bottom:20px;line-height:1.2;text-align:center}
+.intro-page-body{margin-bottom:24px;text-align:left}
+.intro-page-body p{font-size:14px;color:var(--gray-700);line-height:1.7;margin-bottom:10px}
+.intro-page-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:32px;padding:16px 20px;background:#f8fafd;border-radius:var(--radius);border-left:3px solid #003087;text-align:left}
+.intro-page-meta .intro-meta-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--gray-700)}
+.intro-page-meta .dot{width:6px;height:6px;border-radius:50%;background:#003087;flex-shrink:0}
+.intro-page-start{text-align:center}
+.btn-start{background:#003087;color:var(--white);border:none;padding:14px 40px;border-radius:var(--radius);font-size:15px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;transition:background .2s,transform .1s;letter-spacing:.3px}
+.btn-start:hover{background:#002060;transform:translateY(-1px)}
+/* WIZARD */
+.wizard-page{display:none}
+.wizard-page.active{display:block}
+.wizard-nav{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 20px;display:flex;align-items:center;gap:12px;margin-top:16px;position:sticky;bottom:16px;z-index:50}
+.btn-prev,.btn-next{border:none;padding:11px 24px;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s;white-space:nowrap}
+.btn-prev{background:var(--gray-100);color:var(--gray-700)}
+.btn-prev:hover{background:var(--gray-300)}
+.btn-prev:disabled{opacity:.35;cursor:not-allowed}
+.btn-next{background:#003087;color:var(--white)}
+.btn-next:hover{background:#002060}
+.btn-next:disabled{opacity:.35;cursor:not-allowed}
+.wizard-steps{flex:1;display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+.wstep{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;opacity:.45;transition:opacity .2s}
+.wstep.done{opacity:.7}
+.wstep.active{opacity:1}
+.wstep-dot{width:28px;height:28px;border-radius:50%;background:var(--gray-100);border:2px solid var(--gray-300);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--gray-500);transition:all .2s}
+.wstep.done .wstep-dot{background:var(--green-light);border-color:var(--green);color:var(--green)}
+.wstep.active .wstep-dot{background:#003087;border-color:#003087;color:var(--white)}
+.wstep-label{font-size:9px;color:var(--gray-500);font-weight:500;text-align:center;max-width:60px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wstep.active .wstep-label{color:#003087;font-weight:700}
+</style>
+</head>
+<body>
+
+
+<header class="site-header">
+  <div class="header-content">
+    <div class="header-logo-zone"><img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABoAeMDASIAAhEBAxEB/8QAHAABAQEAAgMBAAAAAAAAAAAAAAgHAwYCBAUB/8QAUhAAAQMCAgQIBBEJBwUBAAAAAQACAwQFBhEHEiExCBMUQVFhcZEiU3KBFRcyMzVCUlR0gpKTlLGy0dIWIzdVYnWhs8MYNENWc8HiJDZEosIl/8QAGwEAAgMBAQEAAAAAAAAAAAAAAAYBBAUDBwL/xAA3EQABAwIBCAgFBQEBAQAAAAABAAIEAxEFBhIhMUFxgcETFFFhobHR4SIyNFORFRYzQvAj8ST/2gAMAwEAAhEDEQA/ALLREQhEQkAEkgAbyVx8og8dH8oIsi65EXHyiDx0fygnKIPHR/KCmxUXC5EXHyiDx0fygnKIPHR/KCLFFwuRFx8og8dH8oL9ZLE85MkY49AcCixRcLzREUKURFwvqqZji19TC1w3gvAIRa6L2XMi4OWUnvqD5wLljeyRgfG9r2ncWnMFTYhRcLyREUKUREQhEXi+SNmWu9rc92ZyXjyiDx0fygpsouFyIuPlEHjo/lBOUQeOj+UEWKLhciLj5RB46P5QXm1zXDNpBHSCosi6/UREKUREQhEREIREXoXa92a0MD7td6CgadxqahkWfyiFLWlxsAoc4NFybL30XU36ScBMcWnFtoJHRUAjvC9y3Y2wdcZGxUWKLNNK7Y2NtZHrnsbnmupjVgLlh/BXESaLjYPH5C7Ai/Gua5oc1wc07iDmCv1cV3RERCERCQBmdgXHyiDx0fygiyLrkRcfKIPHR/KCcog8dH8oKbFRcLkRcfKIPHR/KC82ua4ZtcHDqKiyLr9REQpREXByyj99QfOBSASouAudFwcspPfUHzgXMxzXtDmODmnaCDmCixCLgr9REUKUREQhEXByyk99QfOBOWUnvqD5wKc0qLhc6IihSiIiEIiIhC65pRJGjTE5ByItFV/Kcor42Txj+9WnpS/Rnij90VX8pyipN+Tn8L9/JJ2Uv8zN3NeXGyeMf3pxsnjH968qaF9RVQ08eWvLI2Nue7NxAH1rUzoCxvn/AHqzfPv/AALbrSaNC3SOAusKhFryL9E0myyrjZPGP7042Txj+9ar6QWN/fVm+ff+BPSCxv76s30h/wCBcP1OH9wKx+lzPtlZVxsnjH961Dgwve7SkA5ziPQ+fef2mLlOgLG/NVWb59/4F3XQvoqxLg/GovN1mtz6fkskOUErnO1nFpGwtGzYVUnYhFfGe1rwSQVbgYfLpyWOcwgAhbaiIkdPa+TjC+U2GsMXC+VZHFUcJfkTlrO3Nb2lxA86iK41dTcbhU3CtkMtTUyummfn6p7iST3lbrwrMUZuoMIUsnRWVmXnEbT3Odl5KwROmAxeiodKdbvL/ckj5QS+lkdENTfPb/t6/Mu3vVB8FPFGvS12EamXwoSaujB9wSBI0djiHfGPQp9X18F36fDGKrffqcOc6klDnsH+JGdj2+dpPnyWjiEXrUd1Pbs3rOw6V1WQ2ps27tvqriRcNFUwVtHDWUsjZYJ42yRvG5zSMwe5cy86ItoK9JBvpCIiIQsC4XDnNkw5qucNlRuOXuFgvGyeMf3reOF165hzsqP6awVPuDfRM4+ZXn2Nn/7n8PILy42Txj+9ONk8Y/vXbtFuA6rHtxraOluUNCaSFspdJEX62sSMthGW5d//ALOt2/zTQ/Q3fiXetiEWg/MqPsdx9FwoYdLrsFSmy43j1WJcbJ4x/euWGtrYXh8NbVRObucyZzSO4rZ3cHW8ZeDiigJ66R4/+l1rF2hbGdgon1sTKa7U8bS6Q0bjxjQOfUcAT8XMr5ZicOoc0PHl5r6fhk2k3Ocw2/PkV8fDmk/HVilY6mxBVVUTTthrTx7HDozd4Q8xC3vRVpdtWMJ2WqvgFrvDh4EZfnFPl7hx258+qdvRmpSG1ecMssMzJoJHxSxuD2PYcnNcDmCDzEFfEzCo8lp0Wd2j/aV9wsWkRXD4rt7Dy7Fe6LrmjPELsU4Gtd7lyE88OU4AyHGNJa/LqzBPnXY0h1Kbqbyx2saF6BTqNqMD26jpRdV0h48sOCLe2e6TOkqZQeT0cORll68uZvS47O07FwaWcc0mBsNmscGzXCozjoac+3fltc79luwnzDnUhXq6XC9XWoul0qpKqsqHa0kjztPQB0AbgBuC2MKwkyv+lTQzzWLi2LiJ/wA6el/l7rvGNdMOMcRSvjpqx1loSMhT0b8nEftSZaxPZqjqWeyvfLIZZXukkO97yXOPnK/F2TCGBMV4s8OyWiWWnzyNTKRHCPjO9V8XMpubToRGaAGj8JOfUkS36SXH8+C62vwgEZEAjrWwwcHzFr4mulu1licRtZryOy8+ovjYi0KY7tMTpoKOmusTdruRzZvA6dV4aT5syuTcSiOdYVAuz8MltbnGmbLqmGcX4nw1KH2S91dK3PMxa+vEe1js2/wW76NNOVuu8kVsxXHFbK1xDWVbDlTyH9rPbGT15jrG5TdNFLDM+GaJ8UrDqvY9pa5p6CDtBXgdoyKiXh0eUPjGntGv3UxMSkRHfA7R2HV7cFfQIIBBBB3EIp14Pmk6WjqqbB+IKgvpJSI7dUPO2J3NE4+5O5vQdm4jKikjzYdSJVzH8D2p7gzacyl0jOI7CvRxB7A3D4LL9gqFIpZeLb+cfuHtirrxB7AXD4LL9gqEYvWmeSEwZN/LU4c0u5Tn46W48ly8bJ4x/enGyeMf3rwcQ1pcdwGa1KPQRjl8bXtdaMnAEf8AVO/CmCtIo0LdI4C/al6hGrV79E0m3Ysw42Txj+9c1PX19NIJKavq4Hjc6KdzD3grS/SGx3l6q0Z/CnfgXxMRaJseWOnfUz2XldOwZvko5Wy6o8nY/wD9VxbOi1Dmh4/K7OgS6Yziw/heeGdLmO7E9gF4dcqdu+GvbxoI8vY/+K3zRhpWsWNHChe02y75Z8kleCJdm0xu9t2bD1ZbVJC8oZZYJo54JXxSxuD45GOLXMcNxBG4rhMwmPJabDNd2jn2rvCxiRGcLnOb2HkdivcgEZHaFJGnjBP5I4vdNRxFtquRdNTZbo3Z5vj8xOY6j1LedB2OHY0wnr1paLrQuENWBs4zZm2QDm1hn52u5sl9nSZhSnxlhCrs0uqycjjKWU/4UzfUns5j1EpYg134bLLKmrUfXnuTTOjsxOIH09esenLeoqy7e9UBwXsa60cmCbhLtYHTW5zjvbvfF5sy4dWt0LBq6lqKGtnoqyJ0NTTyOiljdva5pyI715Wyuq7Zcaa40EzoKqmkbLDIPauBzCb5sVsugaZ4Hv2JOgy3Q64qDZrHdt/3arxRdf0e4opMYYUpL3S5NdI3UniB2xSj1TO/d1EFdgXnlRjqbixwsQvR6dRtRoe03BRZZwi8bnDeFxZaCYsul1aWAtO2GDc9/UT6kdpPMtHvdyo7NaKq63CURUtLE6WV/Q0DPZ0noCizHGI63FmKK2+13gunflHHnmIoxsYwdg39JJPOtfBYPWK3SOHwt8TsWNjk/q1Ho2n4neA2n09l8QAAZBaPoBwSMV4uFZWxF1qtbmzTh2eUsmebI+vaMz1DLnXQLdR1Vxr6egoYXT1VTI2KGNu9zicgFZ+jfCtNg7CNHZYNV8rG69TKB67MfVO7OYdQCYMZndWo5rT8Tv8AEpewSB1qvnOHwt1952BdjRESKn1EREIRERCF1vSl+jPFH7oqv5TlFStXSl+jPFH7oqv5TlFSb8nP4X7+STspf5mbua9ux+zlu+Fw/baruUI2P2ct3wuH7bVdyr5SfNT48lYyY+Wpw5oiIlhNKIiIQi9e5VtNbrdU3CslEVNTROlledzWtGZPcF7CxvhSYo9DsM02GqaTKoub9ecA7RAzePjO1R2Bysw45k1m0ht8tqrTJIjUHVTs89in7Fl8qcSYkr77V5iWsmMgaTnqN3Nb5mgDzL17FbKq9XqitFEM6isnZDHszyLjlmeoDMnqC9NbPwV8NctxFW4nqI84beziKYkb5njwiPJbs+On2VWbEjl4/qNHkF57EoOmSWsP9jp8yvm8IjBFNha4WittcOpQVFK2lfkMspYmgAnrc3b1lpKypWVphw1+VWALjboow+rjZyik6eNZtAHaM2/GUafwVPBZZkR7OPxN0en+7lexyGI8m7R8LtI5/wC71TnBgxQbrhGbD9VKDVWl+UQO807tre46zezVWvKMtEeJzhPHtvub3ltJI7k9YBzxP2E/FOq74qsxpDmhzSCCMwRzpexuL0EnOGp2njt9eKY8Cl9PGDTrbo4bPTgv1ERYy2lgHC69cw52VH9NYKt64XXrmHOyo/prBU/YL9Ezj5lefY39c/h5BbZwSP8AuS/fA4vtuVGqTNBON7Nge73OrvMdY+OqgZHHyeIPOYcSc8yOla16f+Bve96+it/GsPF4MitLc+mwkaPJbuDT41GI1lR4B0+ZWsosm9P/AAN73vX0Vv411zF3CDifRyU+FrPPHO9pDaqt1QI+sMaTrHtIHUVnMwmY91swjfoWi/GITG36QHdpWVaWqakpNJmIaeiaxsDa1xDWbmkgOcB2OJ2Lq686maapqZamolfLNM90kkjzm57nHMk9ZJJX1sF4ZumLr/DZrVGTJJtllLSWQR57Xu6h/E7E9ttRpDPOoaTuSC69eqcwaXHQN+xUzwboJYdEtuMgIEs08jPJMrsvqWjr0rBa6SyWSitFCzUpqOFsMYO/JoyzPWd5XzdI1yfZ8BXy5ROLZYKGV0ZHM/VIae8hee1ndZkkt/sfMr0ei3qsZrXf1HkFK2mPFMmLMeV1Y2QuoqZ5paNuewRsORcPKObvOOhdOX40ZABecEMtRPHTwN1ppniONvS5xyA7yvQ6VNtGmGN1Beb1arq1Q1HaytZ0CaMYsUyHEF+icbPBJqQwHZyp435/sDds3nMcxzpunhhpoI6enijhhjaGsjjaGtaBuAA2AL0sNWilsOH6GzUbA2CjgbE3Ib8htPaTmT2r6CQcQnPl1S4nRsC9Cw6AyHSDQPi2nv8ARERFQWgugaXNGlsxrbZKmniipb7Ez/p6oDLjMtzJOlp3Z7xvHODJVZTVFFWTUdXC+CogkdFLE8ZOY9pyIPYQr0UwcKOxxW3HVNdYGBjLrTa0gA3yxkNcfO0s7j0pmwCc/P6u83Gz0StlDAZmdZYLHb396yXbvBII3EHaFYmhTFUmLcA0ddVSa9dTk0tWc9pkZlk4+U0td51Ha3Lgk3JzLtfbM5x1JYI6pg62nUcf/ZvctLHY4qxS/a3TyP8Au5ZmASDSlhmx2jmP93recQewFw+Cy/YKhGL1pnkhXdiD2AuHwWX7BUIxetM8kKlk38tThzV7Kf56W48km9Zf5JV70n91h25+A36lBE3rL/JKvik/usXkN+pRlLqpceSnJjXV4c1yIiJVTapy4UOD6K2VtHim3QtgFdKYaxjBk0y5azX5dJAcD05A9KxNUrwsa2CPBdrt7nDj6i4CVjc9uqyN4cezN7e9TUn3Baj6kRpf3jgvP8bpspzHBm2x4rVOC/c30ekl1BrOEdwo5GFvMXM8Np8wDu9VKpH4OkEk2l60Pjz1YI6iR+XueJe363BVwl/KFoEoEbQOaYsnHExCDsJ5KfeFBgnipo8aW6HwJC2G4taNx3Mk/wDk/FWEK8LtQUl1tlTba+Fs1LUxOiljduc0jIqLcf4Yq8IYrrLHVFzxE7WglI9diPqXf7HrBWrgU7pafQPOlurd7LIx+B0NTp2DQ7Xv9123g+42OFsWC3V0wZabo4RylxyEMu5knn9Seog8yq5QKRmMiqEwhpkhpdEVTLXyiW/21raSCN7vCqS4ZRSHpAAOt5J6QuON4a6q9tWkNJ0HkeS7YHijaTHUax0DSOY5jivmcKDGwq62PBdvlzhp3NmuDmn1Um9kfYPVHrLehYeuSqqJ6uqmq6qZ01RPI6SWR2973HMk9pJX29HuF6rGGLKSxUxcxsh16iVv+FC31Tu3aAOshbUajTgx82+gaSfMrEk16k6RnW0uNgPILW+C9grWdJjW4w7AXQ20OHVk+UfxaPjdS39evbKGltlup7fQwthpaaNsUUbdzWtGQC9hIk6W6XWNQ8NyfoMRsSgKQ495RERVFcRERCEREQhdb0pfozxR+6Kr+U5RUrV0pfozxR+6Kr+U5RUm/Jz+F+/kk7KX+Zm7mi/dd/u3d68qeJ9RUxU8QBklkbGzM5DNxyH1rS/SKx/4m1/TP+K3K0mjRt0jgL9qwaMatWv0TSbdizLXf7t3ems/3bu8rTfSKx/4m1/TP+KekVj/AMTa/pn/ABXH9RifcH5Xf9OmfbP4WZF78j4bu9Wzo2/R1hrM5/8A5FL/ACWqcjoK0gZes2v6Z/xVLYNoKi1YQstrqwwVFHb4IJQw5t12RtacjzjMFYOPSqNamwU3A6di38n4tejUeajSNG1fVe5rGF73BrWjMknIAKLtKeJTizHVxu7Xl1MX8TSA80LNjcu3a74yonhE4o/J7AE1HTy6lbdiaWLI5EMI/OOHY3Z2uCk4bBkF1yei2a6udugc1yyjl3c2O3ZpPJfuRJyAJJ3AbyrP0UYaGFMB220vYG1PF8dVZc8z9ru7d2AKP8N3GK0X+hus1GytZSTtm4h79VshbtaCcjszyO7mWxf2i7n/AJVo/pjvwK1jMaTKa2nRbcazpCp4JKixXOqVnWOoaCdG3UqIUfacsNfkzpFr4YowyjrTyylA3Brz4TfM/WHZku8/2i7n/lWj+mO/Auk6VNIz8fU9C2psUFDPRvcWTRzl5LHDa0gtHOGnzKphMCZEr3e34Tr0jhtV3GMQhzKFmO+IG40HjsXQyMxkVW3B9xR+Umj6mhnkL622ZUk+sc3ODR4Dj2ty29IKkpaLwesUDDukCCmnkDKK6gUs2Z2B+f5p3yjl8crSxiL1iMba26Rz8Fl4NL6tKF9TtB5eKrRERIS9BWAcLr1zDnZUf01gq3rhdeuYc7Kj+msFT9gv0TOPmV59jf1z+HkERazwacPWPEN8vUN8tdLcI4aaJ0bZ2awYS5wJHcFufpaYB/ylafmAuczGaUWqaTmkkLpDwSrLoiq1wAO/YozRWZ6WmAf8pWn5gL07joj0e1sRjdhunpyfb073xOHySqwyjj30tPh6qycmpFtDh4+ij9a7oZ0r2vCdKyzXOxU8FI9w4yuo2HjXH3UrSSX+Y7Buavi6aNG0mBKynqqKpkq7RWPLInyAcZC8DPUcRsOYzIOQ3Hz54tNzaGIUBtaeCy2vkYdIOxw4q8qCrpa+ihraKeOopp2CSKWN2bXtO4grqGnYOOiTEIZv5MD5tduf8FmPBVxTO2urcI1MhfA6M1dICc9RwID2jqOYOXSHdK2nH1sfesE3q1RjOSpopWRjpfqnV/jkk2rHMGa1rjoBB4XTrSk9fhOc0aSCLd9lEK+vgksGNLEX+pFyp8/nGr4+32wIPOCNoXkx8kb2ywvLJGODmOHM4HMHvT89uc0jtXnzHZrg7sV8IvlYQvdNiPDNBe6RwMdXC15A9q72ze0HMeZfVXmLmlji12sL1Jjg9oc3UUREXyvpFgfC81NTDAJ8POqy7PzWf+y3xSzwm8QRXfH7LbTvD4rTBxLiPGuOs8eYBg7QVsYFTLpjSNlz4W5rGx6oGQnA7bDxvyWWLWeCpremVV6u70Il1uzjYVky3bgk2pzq6+3xzTqsjjpI3dZOu4fwYmnFnhkOoT2eaU8IYXzaYHbf8LdcQewFw+Cy/YKhGL1pnkhXdiD2AuHwWX7BUIxetM8kLJyb+Wpw5rXyn+eluPJJQTE8DaS0qxafSno9bTxtdiqhBDACPC6OxR6i15+HU5ubnki19Xf/AOLHgYlUglxYAb2191/VWK7Sto8aCTiqh2dAef8AZfDxDpzwPbqZzrdPVXeoy8GOCBzBn1ueAAOzPsUrIqLMnowNySfx6K+/KOURYADgfVdi0g4wuuNb8bpcyyNrW6lPTx+ohZnuHSTznn6hkB11fh2DMrR9Fmii94uqoqu4w1FssgOb53t1ZJh0RA/aIyHXuWq+pRiUtPwtCyGU68yrYXc4ru3BRw1K03HFtQwtje3kdJmPVZEGRw6sw1vmct9XrWugo7Xbqe3W+nZT0tPGI4omDINaNwXspBnSjKruqnbq3L0KBEESg2kNmveizLhCYJOKMKeiVBDr3W1gyRho8KWL28f/ANDrGXOtNRco9d8eqKjNYXWTHZIpOpP1FQKCCMxtBRaLwgMJQYVxwZKFrWUNzY6phjbs4p2eT2gdGZBHlZcyztejUKza9NtRuorzWRQdQqupP1hfhIAJO4Kr+D7gg4VwmLhXw6l2uYEswdvij9pH1bNp6zlzBYxwfcIRYpxqKitDXUFqDaiWM/4j8/zbcujMEnsy51WSXMoJ2qM3eeQ5/hMuTsG95L9w5nl+URESsmxEREIRERCEREQhdb0pfozxR+6Kr+U5RUrV0pfozxR+6Kr+U5RUm/Jz+F+/kk7KX+Zm7mvbsfs5bvhcP22q7lCNj9nLd8Lh+21Xcq+UnzU+PJWMmPlqcOaIiJYTSiIuoaYMTjCeArhcY3htZI3k9IOfjX7AfijN3xV0pUnVXhjdZ0LnWqto0zUdqAup10+4o/KXSFUsgl16G2Z0lPluJB/OO87tmfQ0LP02naSSeck7SvtYFsEuKcXW2wxawFVMBK5u9kQGs93maD58l6NTYyLRDdjR5LzSo98quXf2cfPUF8LjI/dt704yPxje9XlDbbfDCyGKip2xsaGtaIxsA2ALz5FR+9Kf5sLA/crft+PsmH9sO+74e6grjI/GN704yPxje9XryKj96U/zYTkVH70p/mwj9yt+34+yn9sO+74e6gxpDhm0gjqX6C5pDmuLXA5tcDkQeYhbpwqsLMp6i3Yqo4AyOQcjqgxuQDhm6Nxy6fCGfU1YWt2HKbKoiq3al+ZFdErGk7TbxVnaJsTjFuBLfdXuBqgziasdErNjj59juxwXa1MnBexP6F4tqMO1MmVLdWa0WZ2NnYNnym5j4rVTaR8Ui9WkuaNR0jcfTUnzCpfWozXnWNB3j11rAOF165hzsqP6awVb1wuvXMOdlR/TWCpuwX6JnHzKT8b+ufw8gtt4JH/cV/8AgkP23KjFGGjfHV0wLW1lVa6SjqX1cbY3ipDiAGkkZapHSu7/ANoTFv6nsnyJfxrKxTCpMmS6pTAsbbe5a2FYtGjRW06h0i+zvVMIpn/tCYt/U9k+RL+NepcNPeN6mFzKeG00TiMg+Onc5zezXcRn2hUBgMsnUPytA5QQwNBJ4LvnCvudHFhG22hz2msqK0TsZntDGMcC7szcAptXuXu7XK93KS5XeumrauTIOllOZyG4AbgOoZBemmvD4nVKApk3KUcRmdcrmqBYbF3/AIPHGenBZeLzy1ajjPJ4iT/fVVdKfeCthSoNXV4wq4iyARmloifbkkGR46hkGg9buhUElTHqrakuzdgt5nmm3J+i6nEu7+xJ4aByUhadcJvwrj2qMcWrb7k51VSOA2DM5vZ8Vx3dBauhq0tJeDqHG2GZbVVERTtPGUlQBmYZQNh6wdxHOPMpAxTYLrhm9TWi80xgqotvS2RvM9p52np8xyOxMGEYg2TSDHH4x49/ql3GMOdFrF7R8DvDu9F3vQZpK/I2ufarsZH2Oqk1i4bTTSHZrgc7TkMwO3pzqS31tJcaKKtoKmGqppmh0csTw5rh0ghQavsYZxTiLDMxlsV3qqEuObmMIdG49bHZtPnC54jgrZTukpmzvArrhuNuit6OoLt8QrhRSpDp1x/HGGultcpA9U+k2nucB/BfIxDpXx5e4XU9RfHUsDtjo6OMQ5/GHhfxWO3J6STYkAf7uWy7KOKBcAk8PVbrpj0p2/CdFNa7TPFV3+Ruq1jSHNpc/bydfQ3edmexSrNJJNM+aaR0ksji973HNznE5kk85JXjzkkkknMk86/CQBmTkEywIFOGzNbpJ1lK+IYhUmvzn6ANQ7F5xRySysihjfJK9waxjBm5zicgAOckqy9EuFvyQwNQ2mXVNWQZqtw55X7SOvLY3sas04Pui6ekngxfiSnMcwGtb6SQeEzP/FeOY5epHNnmduWW7pex3EG1nChTOga9/smTAcOdRaa9QWJ1bvdejiD2AuHwWX7BUIxetM8kK7sQewFw+Cy/YKhGL1pnkhWcm/lqcOaq5T/PS3Hkv151WOdvyGaoWDg722WGOT8qa0a7Q7LkrOcdqnmb1l/klXtQ/wByg/02/UrGOTK0YU+ida9+SrYDCoSjU6Vt7Wtr7+xYkeDpbsjliqtz+Cs+9YXiix1+G7/V2W5x6lTSv1SQNj2+1e3qIyIVzrLeEHgE4psHozbIQ68W6MlrRvnh3uj6yNpb15jnWfhuNVemzJDrg7tBWlieB0uhL47bOGzTpClqKSSKVksTyyRjg5jhvaQcwR51X+hnHEWNsKsmmLGXSkyirYm7PC5pAPcuG3qOY5lHo2jNdi0d4rrcGYpp71Saz4x+bqoAfXoifCb27AQekDrW5ikATKNh8w1enFYOFYgYda5+U6/XgrYRepZblRXi0010t07Z6SqjEkTxzg/Uepe2kEgtNivQgQ4XCIiKFKnThcez+H/gs322rEVt3C49n8P/AAWb7bViKf8AB/oqfHzK88xn66pw8gt04I3sliL/AEaf65FQqnrgjeyWIv8ARp/rkVCpWxv61/DyCbMC+hZx8yiIiyVroiIhCIiIQiIiELruk5j5NG+Jo42Oe91pqmta0ZkkxOyACjL0Muf6sr/oz/uV3otbDsVMJhaG3v3rHxLCROe1xfa3dfmocsltuQvdvJttcAKuIkmneABrjqVxoi+MSxEzi0ltrX23XTDMMEEOAde9tltSIiLMWoimrhNXi4XrFsFkoqOslorWzwnMge5r53gF20DI6rdUdpcqVRXIMsRKvSlt7KlPiGXR6IOzb61CHoZc/wBWV/0Z/wBy3jgsYUlp/RLFFfSyQyu/6OlErC06ux0jsj0nVGfUVu6LRmY4+TRNIMtfv9lmwsBZGrCqX3t3e6IiLCW+iIiEL4WkDD8WKcHXKxyZB1TCeKcfaSNOsx3mcAovktN3ikdFLaq9sjHFr28neciNhG5Xai1sOxV0Jpbm3B71kYlhDJzmvzs0jRquoXoKe+UFdT19HQV8VTTStmheKZ/gvaQQd3SFamE7wy/4boLxHE+HlUIe6N7SHRu3OaQehwI8y+oijEcSE0NuyxHf7KcNwswS6z7g7Le6wbhZUtVUvw8aalnn1eP1uKjL8vUb8gsJ9DLn+rK/6M/7ld6KzDxwxaLaWZe3f7KtNwISq7qufa/d3W7VCHoZc/1ZX/Rn/cnoZc/1ZX/Rn/crvRWf3K77fj7Kp+2G/c8PdQh6GXP9WV/0Z/3L9barq45NtVwJ6BSv+5XciP3K77fj7I/bDfueHuostGj7G91I5Fha5kHc6aLiGnzyaoWp4B0BSmaKtxlVsEYydyClfnrdT5OjpDe9UAiqSMfk1Rmss3drVyPk9GpHOfd2/V+FxUdNT0dLFSUkMcEELAyOONuq1jRuAA3BcqIsMm63gLIvhY1wlYsX2vkF7oxM1uZiladWWF3Sx3N9R5wV91F9Me6m4OabEL4extRpa8XBUvY20F4ntEj57C5t7o88w1pEc7R1tJyd2g59SzG5W642yZ0NyoKuikacnNqIXRkd4V3rwmhimYWTRMkaeZ7QR/Fb8fKGswWqtDvApfkZOUXm9Jxb4j18VA+uz3be9eUQMr9SIGR3uWDM9wVxyYYw1K/Xkw9aXu906ijJ+pe5R223UX9zoKWm/wBKFrPqCtnKRltFPx9lUbkw++moPx7qQMLaM8bYifGaSx1FPTvO2prBxMYHT4XhO+KCt40ZaGrJhaaK53WUXe6s8Jjnsyhgd0sbzn9p3mAWoosqXjUiQM0fCO71WrDwONGIefid3+n/AKiIiyFsr0r+CbFcAASTSyAAeSVDcdsugjaDbK/cP/Gf9yvFFq4biZghwDb3ttssnE8KE4tJda19l9ag6W2XQxPAtlf6k/8AjP8AuV10WyigB8W36lzIoxLEzODQW2tfbfXb0U4ZhYgFxDr51tltV/VERFlrVUycIXR3NZ79+UNko5ZbfcZCZooYy7iJztOwe1dtPUc+kLK/Qy5/qyv+jP8AuV3omCNlBUpUgxzc622/sl2Tk7TrVS9j80HZb3U48HDFlysd0OFrtR1rLZWyF1NLJA8CCY8xJGxrsvM7tKo5EWXNktlVekDc0nXpWtBiui0hSLs4DVo8EREVNXFPXCwpKuovtgdTUlROG0swcYonPy8Ju/ILFfQy5/qyv+jP+5Xei3omOGNRbSzL27/ZL8zARJruq59r93dbtWAcE6lqqe44hNTS1EAdFBqmWJzM9r92YW/oiy5srrVY1bWv6LVgxeqUBSve3qiIiqq2iIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQv/9k=" alt="FABORY" style="height:28px;display:block"></div>
+    <div class="header-text-zone">
+      <div class="header-div"></div>
+      <div class="header-sub">Inside Sales · Opleidingsenquête v3</div>
+    </div>
+  </div>
+</header>
+
+<div class="progress-bar-wrap">
+  <div class="progress-inner">
+    <span class="progress-label" id="progressLabel">Stap 1 van 8</span>
+    <div class="prog-bg"><div class="prog-fill" id="progFill"></div></div>
+    <span class="prog-pct" id="progPct">0%</span>
+  </div>
+</div>
+
+<div class="main-wrap">
+  
+  <div id="formContent">
+
+    <!-- PAGE 1: PERSOONSGEGEVENS -->
+        <!-- PAGE 1: INTRODUCTIE -->
+    <div class="wizard-page active" id="page-1">
+      <div class="intro-page-card">
+        <img src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAlkZXNjAAAA8AAAACRyWFlaAAABFAAAABRnWFlaAAABKAAAABRiWFlaAAABPAAAABR3dHB0AAABUAAAABRyVFJDAAABZAAAAChnVFJDAAABZAAAAChiVFJDAAABZAAAAChjcHJ0AAABjAAAADxtbHVjAAAAAAAAAAEAAAAMZW5VUwAAAAgAAAAcAHMAUgBHAEJYWVogAAAAAAAAb6IAADj1AAADkFhZWiAAAAAAAABimQAAt4UAABjaWFlaIAAAAAAAACSgAAAPhAAAts9YWVogAAAAAAAA9tYAAQAAAADTLXBhcmEAAAAAAAQAAAACZmYAAPKnAAANWQAAE9AAAApbAAAAAAAAAABtbHVjAAAAAAAAAAEAAAAMZW5VUwAAACAAAAAcAEcAbwBvAGcAbABlACAASQBuAGMALgAgADIAMAAxADb/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCABoAeMDASIAAhEBAxEB/8QAHAABAQEAAgMBAAAAAAAAAAAAAAgHAwYCBAUB/8QAUhAAAQMCAgQIBBEJBwUBAAAAAQACAwQFBhEHEiExCBMUQVFhcZEiU3KBFRcyMzVCUlR0gpKTlLGy0dIWIzdVYnWhs8MYNENWc8HiJDZEosIl/8QAGwEAAgMBAQEAAAAAAAAAAAAAAAYBBAUDBwL/xAA3EQABAwIBCAgFBQEBAQAAAAABAAIEAxEFBhIhMUFxgcETFFFhobHR4SIyNFORFRYzQvAj8ST/2gAMAwEAAhEDEQA/ALLREQhEQkAEkgAbyVx8og8dH8oIsi65EXHyiDx0fygnKIPHR/KCmxUXC5EXHyiDx0fygnKIPHR/KCLFFwuRFx8og8dH8oL9ZLE85MkY49AcCixRcLzREUKURFwvqqZji19TC1w3gvAIRa6L2XMi4OWUnvqD5wLljeyRgfG9r2ncWnMFTYhRcLyREUKUREQhEXi+SNmWu9rc92ZyXjyiDx0fygpsouFyIuPlEHjo/lBOUQeOj+UEWKLhciLj5RB46P5QXm1zXDNpBHSCosi6/UREKUREQhEREIREXoXa92a0MD7td6CgadxqahkWfyiFLWlxsAoc4NFybL30XU36ScBMcWnFtoJHRUAjvC9y3Y2wdcZGxUWKLNNK7Y2NtZHrnsbnmupjVgLlh/BXESaLjYPH5C7Ai/Gua5oc1wc07iDmCv1cV3RERCERCQBmdgXHyiDx0fygiyLrkRcfKIPHR/KCcog8dH8oKbFRcLkRcfKIPHR/KC82ua4ZtcHDqKiyLr9REQpREXByyj99QfOBSASouAudFwcspPfUHzgXMxzXtDmODmnaCDmCixCLgr9REUKUREQhEXByyk99QfOBOWUnvqD5wKc0qLhc6IihSiIiEIiIhC65pRJGjTE5ByItFV/Kcor42Txj+9WnpS/Rnij90VX8pyipN+Tn8L9/JJ2Uv8zN3NeXGyeMf3pxsnjH968qaF9RVQ08eWvLI2Nue7NxAH1rUzoCxvn/AHqzfPv/AALbrSaNC3SOAusKhFryL9E0myyrjZPGP7042Txj+9ar6QWN/fVm+ff+BPSCxv76s30h/wCBcP1OH9wKx+lzPtlZVxsnjH961Dgwve7SkA5ziPQ+fef2mLlOgLG/NVWb59/4F3XQvoqxLg/GovN1mtz6fkskOUErnO1nFpGwtGzYVUnYhFfGe1rwSQVbgYfLpyWOcwgAhbaiIkdPa+TjC+U2GsMXC+VZHFUcJfkTlrO3Nb2lxA86iK41dTcbhU3CtkMtTUyummfn6p7iST3lbrwrMUZuoMIUsnRWVmXnEbT3Odl5KwROmAxeiodKdbvL/ckj5QS+lkdENTfPb/t6/Mu3vVB8FPFGvS12EamXwoSaujB9wSBI0djiHfGPQp9X18F36fDGKrffqcOc6klDnsH+JGdj2+dpPnyWjiEXrUd1Pbs3rOw6V1WQ2ps27tvqriRcNFUwVtHDWUsjZYJ42yRvG5zSMwe5cy86ItoK9JBvpCIiIQsC4XDnNkw5qucNlRuOXuFgvGyeMf3reOF165hzsqP6awVPuDfRM4+ZXn2Nn/7n8PILy42Txj+9ONk8Y/vXbtFuA6rHtxraOluUNCaSFspdJEX62sSMthGW5d//ALOt2/zTQ/Q3fiXetiEWg/MqPsdx9FwoYdLrsFSmy43j1WJcbJ4x/euWGtrYXh8NbVRObucyZzSO4rZ3cHW8ZeDiigJ66R4/+l1rF2hbGdgon1sTKa7U8bS6Q0bjxjQOfUcAT8XMr5ZicOoc0PHl5r6fhk2k3Ocw2/PkV8fDmk/HVilY6mxBVVUTTthrTx7HDozd4Q8xC3vRVpdtWMJ2WqvgFrvDh4EZfnFPl7hx258+qdvRmpSG1ecMssMzJoJHxSxuD2PYcnNcDmCDzEFfEzCo8lp0Wd2j/aV9wsWkRXD4rt7Dy7Fe6LrmjPELsU4Gtd7lyE88OU4AyHGNJa/LqzBPnXY0h1Kbqbyx2saF6BTqNqMD26jpRdV0h48sOCLe2e6TOkqZQeT0cORll68uZvS47O07FwaWcc0mBsNmscGzXCozjoac+3fltc79luwnzDnUhXq6XC9XWoul0qpKqsqHa0kjztPQB0AbgBuC2MKwkyv+lTQzzWLi2LiJ/wA6el/l7rvGNdMOMcRSvjpqx1loSMhT0b8nEftSZaxPZqjqWeyvfLIZZXukkO97yXOPnK/F2TCGBMV4s8OyWiWWnzyNTKRHCPjO9V8XMpubToRGaAGj8JOfUkS36SXH8+C62vwgEZEAjrWwwcHzFr4mulu1licRtZryOy8+ovjYi0KY7tMTpoKOmusTdruRzZvA6dV4aT5syuTcSiOdYVAuz8MltbnGmbLqmGcX4nw1KH2S91dK3PMxa+vEe1js2/wW76NNOVuu8kVsxXHFbK1xDWVbDlTyH9rPbGT15jrG5TdNFLDM+GaJ8UrDqvY9pa5p6CDtBXgdoyKiXh0eUPjGntGv3UxMSkRHfA7R2HV7cFfQIIBBBB3EIp14Pmk6WjqqbB+IKgvpJSI7dUPO2J3NE4+5O5vQdm4jKikjzYdSJVzH8D2p7gzacyl0jOI7CvRxB7A3D4LL9gqFIpZeLb+cfuHtirrxB7AXD4LL9gqEYvWmeSEwZN/LU4c0u5Tn46W48ly8bJ4x/enGyeMf3rwcQ1pcdwGa1KPQRjl8bXtdaMnAEf8AVO/CmCtIo0LdI4C/al6hGrV79E0m3Ysw42Txj+9c1PX19NIJKavq4Hjc6KdzD3grS/SGx3l6q0Z/CnfgXxMRaJseWOnfUz2XldOwZvko5Wy6o8nY/wD9VxbOi1Dmh4/K7OgS6Yziw/heeGdLmO7E9gF4dcqdu+GvbxoI8vY/+K3zRhpWsWNHChe02y75Z8kleCJdm0xu9t2bD1ZbVJC8oZZYJo54JXxSxuD45GOLXMcNxBG4rhMwmPJabDNd2jn2rvCxiRGcLnOb2HkdivcgEZHaFJGnjBP5I4vdNRxFtquRdNTZbo3Z5vj8xOY6j1LedB2OHY0wnr1paLrQuENWBs4zZm2QDm1hn52u5sl9nSZhSnxlhCrs0uqycjjKWU/4UzfUns5j1EpYg134bLLKmrUfXnuTTOjsxOIH09esenLeoqy7e9UBwXsa60cmCbhLtYHTW5zjvbvfF5sy4dWt0LBq6lqKGtnoqyJ0NTTyOiljdva5pyI715Wyuq7Zcaa40EzoKqmkbLDIPauBzCb5sVsugaZ4Hv2JOgy3Q64qDZrHdt/3arxRdf0e4opMYYUpL3S5NdI3UniB2xSj1TO/d1EFdgXnlRjqbixwsQvR6dRtRoe03BRZZwi8bnDeFxZaCYsul1aWAtO2GDc9/UT6kdpPMtHvdyo7NaKq63CURUtLE6WV/Q0DPZ0noCizHGI63FmKK2+13gunflHHnmIoxsYwdg39JJPOtfBYPWK3SOHwt8TsWNjk/q1Ho2n4neA2n09l8QAAZBaPoBwSMV4uFZWxF1qtbmzTh2eUsmebI+vaMz1DLnXQLdR1Vxr6egoYXT1VTI2KGNu9zicgFZ+jfCtNg7CNHZYNV8rG69TKB67MfVO7OYdQCYMZndWo5rT8Tv8AEpewSB1qvnOHwt1952BdjRESKn1EREIRERCF1vSl+jPFH7oqv5TlFStXSl+jPFH7oqv5TlFSb8nP4X7+STspf5mbua9ux+zlu+Fw/baruUI2P2ct3wuH7bVdyr5SfNT48lYyY+Wpw5oiIlhNKIiIQi9e5VtNbrdU3CslEVNTROlledzWtGZPcF7CxvhSYo9DsM02GqaTKoub9ecA7RAzePjO1R2Bysw45k1m0ht8tqrTJIjUHVTs89in7Fl8qcSYkr77V5iWsmMgaTnqN3Nb5mgDzL17FbKq9XqitFEM6isnZDHszyLjlmeoDMnqC9NbPwV8NctxFW4nqI84beziKYkb5njwiPJbs+On2VWbEjl4/qNHkF57EoOmSWsP9jp8yvm8IjBFNha4WittcOpQVFK2lfkMspYmgAnrc3b1lpKypWVphw1+VWALjboow+rjZyik6eNZtAHaM2/GUafwVPBZZkR7OPxN0en+7lexyGI8m7R8LtI5/wC71TnBgxQbrhGbD9VKDVWl+UQO807tre46zezVWvKMtEeJzhPHtvub3ltJI7k9YBzxP2E/FOq74qsxpDmhzSCCMwRzpexuL0EnOGp2njt9eKY8Cl9PGDTrbo4bPTgv1ERYy2lgHC69cw52VH9NYKt64XXrmHOyo/prBU/YL9Ezj5lefY39c/h5BbZwSP8AuS/fA4vtuVGqTNBON7Nge73OrvMdY+OqgZHHyeIPOYcSc8yOla16f+Bve96+it/GsPF4MitLc+mwkaPJbuDT41GI1lR4B0+ZWsosm9P/AAN73vX0Vv411zF3CDifRyU+FrPPHO9pDaqt1QI+sMaTrHtIHUVnMwmY91swjfoWi/GITG36QHdpWVaWqakpNJmIaeiaxsDa1xDWbmkgOcB2OJ2Lq686maapqZamolfLNM90kkjzm57nHMk9ZJJX1sF4ZumLr/DZrVGTJJtllLSWQR57Xu6h/E7E9ttRpDPOoaTuSC69eqcwaXHQN+xUzwboJYdEtuMgIEs08jPJMrsvqWjr0rBa6SyWSitFCzUpqOFsMYO/JoyzPWd5XzdI1yfZ8BXy5ROLZYKGV0ZHM/VIae8hee1ndZkkt/sfMr0ei3qsZrXf1HkFK2mPFMmLMeV1Y2QuoqZ5paNuewRsORcPKObvOOhdOX40ZABecEMtRPHTwN1ppniONvS5xyA7yvQ6VNtGmGN1Beb1arq1Q1HaytZ0CaMYsUyHEF+icbPBJqQwHZyp435/sDds3nMcxzpunhhpoI6enijhhjaGsjjaGtaBuAA2AL0sNWilsOH6GzUbA2CjgbE3Ib8htPaTmT2r6CQcQnPl1S4nRsC9Cw6AyHSDQPi2nv8ARERFQWgugaXNGlsxrbZKmniipb7Ez/p6oDLjMtzJOlp3Z7xvHODJVZTVFFWTUdXC+CogkdFLE8ZOY9pyIPYQr0UwcKOxxW3HVNdYGBjLrTa0gA3yxkNcfO0s7j0pmwCc/P6u83Gz0StlDAZmdZYLHb396yXbvBII3EHaFYmhTFUmLcA0ddVSa9dTk0tWc9pkZlk4+U0td51Ha3Lgk3JzLtfbM5x1JYI6pg62nUcf/ZvctLHY4qxS/a3TyP8Au5ZmASDSlhmx2jmP93recQewFw+Cy/YKhGL1pnkhXdiD2AuHwWX7BUIxetM8kKlk38tThzV7Kf56W48km9Zf5JV70n91h25+A36lBE3rL/JKvik/usXkN+pRlLqpceSnJjXV4c1yIiJVTapy4UOD6K2VtHim3QtgFdKYaxjBk0y5azX5dJAcD05A9KxNUrwsa2CPBdrt7nDj6i4CVjc9uqyN4cezN7e9TUn3Baj6kRpf3jgvP8bpspzHBm2x4rVOC/c30ekl1BrOEdwo5GFvMXM8Np8wDu9VKpH4OkEk2l60Pjz1YI6iR+XueJe363BVwl/KFoEoEbQOaYsnHExCDsJ5KfeFBgnipo8aW6HwJC2G4taNx3Mk/wDk/FWEK8LtQUl1tlTba+Fs1LUxOiljduc0jIqLcf4Yq8IYrrLHVFzxE7WglI9diPqXf7HrBWrgU7pafQPOlurd7LIx+B0NTp2DQ7Xv9123g+42OFsWC3V0wZabo4RylxyEMu5knn9Seog8yq5QKRmMiqEwhpkhpdEVTLXyiW/21raSCN7vCqS4ZRSHpAAOt5J6QuON4a6q9tWkNJ0HkeS7YHijaTHUax0DSOY5jivmcKDGwq62PBdvlzhp3NmuDmn1Um9kfYPVHrLehYeuSqqJ6uqmq6qZ01RPI6SWR2973HMk9pJX29HuF6rGGLKSxUxcxsh16iVv+FC31Tu3aAOshbUajTgx82+gaSfMrEk16k6RnW0uNgPILW+C9grWdJjW4w7AXQ20OHVk+UfxaPjdS39evbKGltlup7fQwthpaaNsUUbdzWtGQC9hIk6W6XWNQ8NyfoMRsSgKQ495RERVFcRERCEREQhdb0pfozxR+6Kr+U5RUrV0pfozxR+6Kr+U5RUm/Jz+F+/kk7KX+Zm7mi/dd/u3d68qeJ9RUxU8QBklkbGzM5DNxyH1rS/SKx/4m1/TP+K3K0mjRt0jgL9qwaMatWv0TSbdizLXf7t3ems/3bu8rTfSKx/4m1/TP+KekVj/AMTa/pn/ABXH9RifcH5Xf9OmfbP4WZF78j4bu9Wzo2/R1hrM5/8A5FL/ACWqcjoK0gZes2v6Z/xVLYNoKi1YQstrqwwVFHb4IJQw5t12RtacjzjMFYOPSqNamwU3A6di38n4tejUeajSNG1fVe5rGF73BrWjMknIAKLtKeJTizHVxu7Xl1MX8TSA80LNjcu3a74yonhE4o/J7AE1HTy6lbdiaWLI5EMI/OOHY3Z2uCk4bBkF1yei2a6udugc1yyjl3c2O3ZpPJfuRJyAJJ3AbyrP0UYaGFMB220vYG1PF8dVZc8z9ru7d2AKP8N3GK0X+hus1GytZSTtm4h79VshbtaCcjszyO7mWxf2i7n/AJVo/pjvwK1jMaTKa2nRbcazpCp4JKixXOqVnWOoaCdG3UqIUfacsNfkzpFr4YowyjrTyylA3Brz4TfM/WHZku8/2i7n/lWj+mO/Auk6VNIz8fU9C2psUFDPRvcWTRzl5LHDa0gtHOGnzKphMCZEr3e34Tr0jhtV3GMQhzKFmO+IG40HjsXQyMxkVW3B9xR+Umj6mhnkL622ZUk+sc3ODR4Dj2ty29IKkpaLwesUDDukCCmnkDKK6gUs2Z2B+f5p3yjl8crSxiL1iMba26Rz8Fl4NL6tKF9TtB5eKrRERIS9BWAcLr1zDnZUf01gq3rhdeuYc7Kj+msFT9gv0TOPmV59jf1z+HkERazwacPWPEN8vUN8tdLcI4aaJ0bZ2awYS5wJHcFufpaYB/ylafmAuczGaUWqaTmkkLpDwSrLoiq1wAO/YozRWZ6WmAf8pWn5gL07joj0e1sRjdhunpyfb073xOHySqwyjj30tPh6qycmpFtDh4+ij9a7oZ0r2vCdKyzXOxU8FI9w4yuo2HjXH3UrSSX+Y7Buavi6aNG0mBKynqqKpkq7RWPLInyAcZC8DPUcRsOYzIOQ3Hz54tNzaGIUBtaeCy2vkYdIOxw4q8qCrpa+ihraKeOopp2CSKWN2bXtO4grqGnYOOiTEIZv5MD5tduf8FmPBVxTO2urcI1MhfA6M1dICc9RwID2jqOYOXSHdK2nH1sfesE3q1RjOSpopWRjpfqnV/jkk2rHMGa1rjoBB4XTrSk9fhOc0aSCLd9lEK+vgksGNLEX+pFyp8/nGr4+32wIPOCNoXkx8kb2ywvLJGODmOHM4HMHvT89uc0jtXnzHZrg7sV8IvlYQvdNiPDNBe6RwMdXC15A9q72ze0HMeZfVXmLmlji12sL1Jjg9oc3UUREXyvpFgfC81NTDAJ8POqy7PzWf+y3xSzwm8QRXfH7LbTvD4rTBxLiPGuOs8eYBg7QVsYFTLpjSNlz4W5rGx6oGQnA7bDxvyWWLWeCpremVV6u70Il1uzjYVky3bgk2pzq6+3xzTqsjjpI3dZOu4fwYmnFnhkOoT2eaU8IYXzaYHbf8LdcQewFw+Cy/YKhGL1pnkhXdiD2AuHwWX7BUIxetM8kLJyb+Wpw5rXyn+eluPJJQTE8DaS0qxafSno9bTxtdiqhBDACPC6OxR6i15+HU5ubnki19Xf/AOLHgYlUglxYAb2191/VWK7Sto8aCTiqh2dAef8AZfDxDpzwPbqZzrdPVXeoy8GOCBzBn1ueAAOzPsUrIqLMnowNySfx6K+/KOURYADgfVdi0g4wuuNb8bpcyyNrW6lPTx+ohZnuHSTznn6hkB11fh2DMrR9Fmii94uqoqu4w1FssgOb53t1ZJh0RA/aIyHXuWq+pRiUtPwtCyGU68yrYXc4ru3BRw1K03HFtQwtje3kdJmPVZEGRw6sw1vmct9XrWugo7Xbqe3W+nZT0tPGI4omDINaNwXspBnSjKruqnbq3L0KBEESg2kNmveizLhCYJOKMKeiVBDr3W1gyRho8KWL28f/ANDrGXOtNRco9d8eqKjNYXWTHZIpOpP1FQKCCMxtBRaLwgMJQYVxwZKFrWUNzY6phjbs4p2eT2gdGZBHlZcyztejUKza9NtRuorzWRQdQqupP1hfhIAJO4Kr+D7gg4VwmLhXw6l2uYEswdvij9pH1bNp6zlzBYxwfcIRYpxqKitDXUFqDaiWM/4j8/zbcujMEnsy51WSXMoJ2qM3eeQ5/hMuTsG95L9w5nl+URESsmxEREIRERCEREQhdb0pfozxR+6Kr+U5RUrV0pfozxR+6Kr+U5RUm/Jz+F+/kk7KX+Zm7mvbsfs5bvhcP22q7lCNj9nLd8Lh+21Xcq+UnzU+PJWMmPlqcOaIiJYTSiIuoaYMTjCeArhcY3htZI3k9IOfjX7AfijN3xV0pUnVXhjdZ0LnWqto0zUdqAup10+4o/KXSFUsgl16G2Z0lPluJB/OO87tmfQ0LP02naSSeck7SvtYFsEuKcXW2wxawFVMBK5u9kQGs93maD58l6NTYyLRDdjR5LzSo98quXf2cfPUF8LjI/dt704yPxje9XlDbbfDCyGKip2xsaGtaIxsA2ALz5FR+9Kf5sLA/crft+PsmH9sO+74e6grjI/GN704yPxje9XryKj96U/zYTkVH70p/mwj9yt+34+yn9sO+74e6gxpDhm0gjqX6C5pDmuLXA5tcDkQeYhbpwqsLMp6i3Yqo4AyOQcjqgxuQDhm6Nxy6fCGfU1YWt2HKbKoiq3al+ZFdErGk7TbxVnaJsTjFuBLfdXuBqgziasdErNjj59juxwXa1MnBexP6F4tqMO1MmVLdWa0WZ2NnYNnym5j4rVTaR8Ui9WkuaNR0jcfTUnzCpfWozXnWNB3j11rAOF165hzsqP6awVb1wuvXMOdlR/TWCpuwX6JnHzKT8b+ufw8gtt4JH/cV/8AgkP23KjFGGjfHV0wLW1lVa6SjqX1cbY3ipDiAGkkZapHSu7/ANoTFv6nsnyJfxrKxTCpMmS6pTAsbbe5a2FYtGjRW06h0i+zvVMIpn/tCYt/U9k+RL+NepcNPeN6mFzKeG00TiMg+Onc5zezXcRn2hUBgMsnUPytA5QQwNBJ4LvnCvudHFhG22hz2msqK0TsZntDGMcC7szcAptXuXu7XK93KS5XeumrauTIOllOZyG4AbgOoZBemmvD4nVKApk3KUcRmdcrmqBYbF3/AIPHGenBZeLzy1ajjPJ4iT/fVVdKfeCthSoNXV4wq4iyARmloifbkkGR46hkGg9buhUElTHqrakuzdgt5nmm3J+i6nEu7+xJ4aByUhadcJvwrj2qMcWrb7k51VSOA2DM5vZ8Vx3dBauhq0tJeDqHG2GZbVVERTtPGUlQBmYZQNh6wdxHOPMpAxTYLrhm9TWi80xgqotvS2RvM9p52np8xyOxMGEYg2TSDHH4x49/ql3GMOdFrF7R8DvDu9F3vQZpK/I2ufarsZH2Oqk1i4bTTSHZrgc7TkMwO3pzqS31tJcaKKtoKmGqppmh0csTw5rh0ghQavsYZxTiLDMxlsV3qqEuObmMIdG49bHZtPnC54jgrZTukpmzvArrhuNuit6OoLt8QrhRSpDp1x/HGGultcpA9U+k2nucB/BfIxDpXx5e4XU9RfHUsDtjo6OMQ5/GHhfxWO3J6STYkAf7uWy7KOKBcAk8PVbrpj0p2/CdFNa7TPFV3+Ruq1jSHNpc/bydfQ3edmexSrNJJNM+aaR0ksji973HNznE5kk85JXjzkkkknMk86/CQBmTkEywIFOGzNbpJ1lK+IYhUmvzn6ANQ7F5xRySysihjfJK9waxjBm5zicgAOckqy9EuFvyQwNQ2mXVNWQZqtw55X7SOvLY3sas04Pui6ekngxfiSnMcwGtb6SQeEzP/FeOY5epHNnmduWW7pex3EG1nChTOga9/smTAcOdRaa9QWJ1bvdejiD2AuHwWX7BUIxetM8kK7sQewFw+Cy/YKhGL1pnkhWcm/lqcOaq5T/PS3Hkv151WOdvyGaoWDg722WGOT8qa0a7Q7LkrOcdqnmb1l/klXtQ/wByg/02/UrGOTK0YU+ida9+SrYDCoSjU6Vt7Wtr7+xYkeDpbsjliqtz+Cs+9YXiix1+G7/V2W5x6lTSv1SQNj2+1e3qIyIVzrLeEHgE4psHozbIQ68W6MlrRvnh3uj6yNpb15jnWfhuNVemzJDrg7tBWlieB0uhL47bOGzTpClqKSSKVksTyyRjg5jhvaQcwR51X+hnHEWNsKsmmLGXSkyirYm7PC5pAPcuG3qOY5lHo2jNdi0d4rrcGYpp71Saz4x+bqoAfXoifCb27AQekDrW5ikATKNh8w1enFYOFYgYda5+U6/XgrYRepZblRXi0010t07Z6SqjEkTxzg/Uepe2kEgtNivQgQ4XCIiKFKnThcez+H/gs322rEVt3C49n8P/AAWb7bViKf8AB/oqfHzK88xn66pw8gt04I3sliL/AEaf65FQqnrgjeyWIv8ARp/rkVCpWxv61/DyCbMC+hZx8yiIiyVroiIhCIiIQiIiELruk5j5NG+Jo42Oe91pqmta0ZkkxOyACjL0Muf6sr/oz/uV3otbDsVMJhaG3v3rHxLCROe1xfa3dfmocsltuQvdvJttcAKuIkmneABrjqVxoi+MSxEzi0ltrX23XTDMMEEOAde9tltSIiLMWoimrhNXi4XrFsFkoqOslorWzwnMge5r53gF20DI6rdUdpcqVRXIMsRKvSlt7KlPiGXR6IOzb61CHoZc/wBWV/0Z/wBy3jgsYUlp/RLFFfSyQyu/6OlErC06ux0jsj0nVGfUVu6LRmY4+TRNIMtfv9lmwsBZGrCqX3t3e6IiLCW+iIiEL4WkDD8WKcHXKxyZB1TCeKcfaSNOsx3mcAovktN3ikdFLaq9sjHFr28neciNhG5Xai1sOxV0Jpbm3B71kYlhDJzmvzs0jRquoXoKe+UFdT19HQV8VTTStmheKZ/gvaQQd3SFamE7wy/4boLxHE+HlUIe6N7SHRu3OaQehwI8y+oijEcSE0NuyxHf7KcNwswS6z7g7Le6wbhZUtVUvw8aalnn1eP1uKjL8vUb8gsJ9DLn+rK/6M/7ld6KzDxwxaLaWZe3f7KtNwISq7qufa/d3W7VCHoZc/1ZX/Rn/cnoZc/1ZX/Rn/crvRWf3K77fj7Kp+2G/c8PdQh6GXP9WV/0Z/3L9barq45NtVwJ6BSv+5XciP3K77fj7I/bDfueHuostGj7G91I5Fha5kHc6aLiGnzyaoWp4B0BSmaKtxlVsEYydyClfnrdT5OjpDe9UAiqSMfk1Rmss3drVyPk9GpHOfd2/V+FxUdNT0dLFSUkMcEELAyOONuq1jRuAA3BcqIsMm63gLIvhY1wlYsX2vkF7oxM1uZiladWWF3Sx3N9R5wV91F9Me6m4OabEL4extRpa8XBUvY20F4ntEj57C5t7o88w1pEc7R1tJyd2g59SzG5W642yZ0NyoKuikacnNqIXRkd4V3rwmhimYWTRMkaeZ7QR/Fb8fKGswWqtDvApfkZOUXm9Jxb4j18VA+uz3be9eUQMr9SIGR3uWDM9wVxyYYw1K/Xkw9aXu906ijJ+pe5R223UX9zoKWm/wBKFrPqCtnKRltFPx9lUbkw++moPx7qQMLaM8bYifGaSx1FPTvO2prBxMYHT4XhO+KCt40ZaGrJhaaK53WUXe6s8Jjnsyhgd0sbzn9p3mAWoosqXjUiQM0fCO71WrDwONGIefid3+n/AKiIiyFsr0r+CbFcAASTSyAAeSVDcdsugjaDbK/cP/Gf9yvFFq4biZghwDb3ttssnE8KE4tJda19l9ag6W2XQxPAtlf6k/8AjP8AuV10WyigB8W36lzIoxLEzODQW2tfbfXb0U4ZhYgFxDr51tltV/VERFlrVUycIXR3NZ79+UNko5ZbfcZCZooYy7iJztOwe1dtPUc+kLK/Qy5/qyv+jP8AuV3omCNlBUpUgxzc622/sl2Tk7TrVS9j80HZb3U48HDFlysd0OFrtR1rLZWyF1NLJA8CCY8xJGxrsvM7tKo5EWXNktlVekDc0nXpWtBiui0hSLs4DVo8EREVNXFPXCwpKuovtgdTUlROG0swcYonPy8Ju/ILFfQy5/qyv+jP+5Xei3omOGNRbSzL27/ZL8zARJruq59r93dbtWAcE6lqqe44hNTS1EAdFBqmWJzM9r92YW/oiy5srrVY1bWv6LVgxeqUBSve3qiIiqq2iIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQiIiEIiIhCIiIQv/9k=" alt="FABORY" style="height:44px;display:block;margin-left:auto;margin-right:auto;margin-bottom:20px">
+        <h1 class="intro-page-title">Opleidingsenquête Inside Sales</h1>
+        <div class="intro-page-body">
+          <p>Door de recente herindeling binnen Inside Sales zit iedereen in een nieuwe werksituatie. Met deze enquête brengen we in kaart waar aanvullende training het meest nodig is.</p>
+          <p>Invullen duurt circa <strong>15–30 minuten</strong>.</p>
+        </div>
+        <div class="intro-page-meta">
+          <div class="intro-meta-item"><span class="dot"></span> Verplicht voor alle Inside Sales medewerkers</div>
+          <div class="intro-meta-item"><span class="dot"></span> Niet anoniem</div>
+          <div class="intro-meta-item"><span class="dot"></span> <span id="meta-opslag-tekst">Na het invullen ontvang je een bestand om door te sturen</span></div>
+        </div>
+        <div class="intro-page-start">
+          <button class="btn-start" onclick="wizardNext()">Start de enquête →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: PERSOONSGEGEVENS -->
+    <div class="wizard-page" id="page-3">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <div class="section-title-text">Persoonsgegevens</div>
+        </div>
+        <div class="card">
+          <div class="personal-grid">
+            <div class="field-group"><label>Naam <span class="req">*</span></label><input type="text" id="naam" placeholder="Volledige naam"></div>
+            <div class="field-group"><label>Rol / Functie <span class="req">*</span></label><input type="text" id="rol" placeholder="Bijv. Inside Sales Medewerker"></div>
+            <div class="field-group"><label>E-mailadres <span class="req">*</span></label><input type="email" id="email" placeholder="naam@fabory.com"></div>
+            <div class="field-group"><label>Jaren ervaring bij Fabory <span class="req">*</span></label>
+              <select id="ervaring">
+                <option value="">Selecteer</option>
+                <option>&lt; 1 jaar</option><option>1 – 2 jaar</option><option>3 – 5 jaar</option><option>6 – 10 jaar</option><option>&gt; 10 jaar</option>
+              </select>
+            </div>
+            <div class="field-group"><label>Team <span class="req">*</span></label>
+              <select id="team">
+                <option value="">Selecteer jouw team</option>
+                <option>Noord Oost NL</option><option>West NL</option><option>Zuid NL</option><option>National Accounts</option><option>Petro</option>
+              </select>
+            </div>
+            <div class="field-group full">
+              <label>Hoe zeker voel je je momenteel in je rol? <span class="req">*</span></label>
+              <div class="star-display" id="stars-zekerheid"></div>
+              <div class="star-label-text" id="star-label-zekerheid"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 2: MASTERS IN FASTENERS -->
+    <div class="wizard-page" id="page-3">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">2</div>
+          <div class="section-title-text">Masters in Fasteners</div>
+        </div>
+        <div class="card" style="border:2px solid var(--red)">
+          <div class="cat-header mif"><span>🏆</span><h2>Masters in Fasteners</h2><span class="cat-tag" style="background:rgba(255,255,255,.2);color:white">Prioriteit · 6 onderdelen</span></div>
+          <div id="mif-desc" style="padding:12px 20px 0;background:var(--red-light)"><p style="font-size:12px;color:var(--gray-700);line-height:1.6;font-style:italic;border-left:3px solid var(--red);padding:8px 10px;background:rgba(255,255,255,.7);border-radius:0 4px 4px 0">Fabory is marktleider in bevestigingstechnologie. Dat is niet zomaar een titel — het is een belofte aan onze klanten en een verwachting naar onze medewerkers. De naam zegt het al: wij zijn de Masters in Fasteners. Maar wat betekent dat in de praktijk?<br><br>Masters in Fasteners gaat verder dan alleen productkennis. Het gaat over marktinzicht, commercieel bewustzijn, het begrijpen van de klant en het kunnen inzetten van de juiste service op het juiste moment. Het is de combinatie van al deze onderdelen die een Inside Sales medewerker bij Fabory onderscheidt van de concurrent.<br><br>Wij verwachten van onze Inside Sales dat zij zichzelf zien als specialist — iemand die met vertrouwen het gesprek aangaat met de klant, adviseert op basis van kennis en toegevoegde waarde levert.</p></div>
+          <div id="mif-subcats"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 3: SAP -->
+    <div class="wizard-page" id="page-4">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <div class="section-title-text">SAP</div>
+        </div>
+        <div class="card" style="background:var(--sap-sand)">
+          <div class="cat-header sap"><span>🗄️</span><h2>SAP</h2><span class="cat-tag" style="background:rgba(245,166,35,.25);color:var(--sap-gold);font-weight:700">15 onderdelen</span></div>
+          <div id="sap-desc" style="padding:12px 20px 0;background:var(--sap-sand)"><p style="font-size:12px;color:var(--gray-700);line-height:1.6;font-style:italic;border-left:3px solid var(--sap-gold);padding:8px 10px;background:rgba(255,255,255,.6);border-radius:0 4px 4px 0">SAP is misschien wel de belangrijkste tool die de Inside Sales heeft. Alle orders, offertes en facturen worden bijvoorbeeld in SAP verwerkt. Daarom is het van groot belang dat onze Inside Sales expert level kennis heeft op diverse benodigde onderdelen van het SAP pakket.<br><br>Per onderdeel hebben we enkele transacties geselecteerd die je als Inside Sales moet beheersen.</p></div>
+          <div id="sap-subcats" style="background:var(--sap-sand)"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 4: C4C -->
+    <div class="wizard-page" id="page-5">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">4</div>
+          <div class="section-title-text">C4C</div>
+        </div>
+        <div class="card" style="background:var(--white)">
+          <div class="cat-header c4c"><span>💬</span><h2>C4C</h2><span class="cat-tag" style="background:rgba(255,255,255,.15);color:white">4 onderdelen</span></div>
+          <div id="c4c-desc" style="padding:12px 20px 0;background:var(--white)"><p style="font-size:12px;color:var(--gray-700);line-height:1.6;font-style:italic;border-left:3px solid var(--c4c-mid);padding:8px 10px;background:var(--c4c-light);border-radius:0 4px 4px 0">Klantinformatie is de hoeksteen van succesvolle verkoop en klantrelaties. Door alle informatie beschikbaar te maken voor iedereen, is het mogelijk om onze klant altijd correct en geïnformeerd te woord te staan. Hiermee resulterend in betere verkoop, conversie, marktkennis en klanttevredenheid. Binnen Fabory gebruiken we C4C voor het opslaan en beheren van al onze klantcommunicatie en klantinformatie. We hebben C4C dusdanig ingericht om deze als krachtige verkooptool te kunnen inzetten.<br><br>C4C is in december 2024, na een lange ontwerp, test en implementatie fase gelanceerd binnen Fabory. De eerste teams die ermee gingen werken waren de Inside Sales, Sales en Creditmanagement van Nederland en België. Deze teams waren ook nauw betrokken bij de ontwikkeling.<br><br>Om ervoor te zorgen dat we C4C maximaal benutten, verwachten wij dat de Inside Sales begrijpt hoe het systeem werkt, welke keuzes er gemaakt worden en waarom het zo belangrijk is.</p></div>
+          <div id="c4c-subcats"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 5: PROCESSEN -->
+    <div class="wizard-page" id="page-6">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">5</div>
+          <div class="section-title-text">Processen</div>
+        </div>
+        <div class="card" style="background:var(--proc-light)">
+          <div class="cat-header proc"><span>⚙️</span><h2>Processen</h2><span class="cat-tag" style="background:rgba(255,255,255,.15);color:white">6 onderdelen</span></div>
+          <div id="proc-desc" style="padding:12px 20px 0;background:var(--proc-light)"><p style="font-size:12px;color:var(--gray-700);line-height:1.6;font-style:italic;border-left:3px solid var(--proc-mid);padding:8px 10px;background:rgba(255,255,255,.6);border-radius:0 4px 4px 0">Goede processen zijn de ruggengraat van een effectieve Inside Sales organisatie. Zonder duidelijke afspraken, correcte prijsvoering en een vlotte samenwerking met de rest van de organisatie, kunnen wij onze klanten niet optimaal bedienen.\n\nBinnen Fabory werken Inside Sales en een aantal ondersteunende afdelingen nauw samen. Van het inkopen van een niet-standaard artikel via local sourcing, tot het bewaken van kredietlimieten met Creditmanagement en het afstemmen van leveringen met ons Centraal Magazijn in Tilburg — al deze processen raken het dagelijkse werk van de Inside Sales direct.\n\nWij verwachten van onze Inside Sales dat zij de processen rondom hun werk goed begrijpen, weten met wie zij moeten samenwerken en dit ook in de praktijk toepassen.</p></div>
+          <div id="processen-subcats"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 6: DIGITAL -->
+    <div class="wizard-page" id="page-7">
+      <div class="section">
+        <div class="section-header">
+          <div class="section-number">6</div>
+          <div class="section-title-text">Digital</div>
+        </div>
+        <div class="card" style="background:var(--dig-light)">
+          <div class="cat-header dig"><span>🌐</span><h2>Digital</h2><span class="cat-tag" style="background:rgba(255,255,255,.15);color:white">3 onderdelen</span></div>
+          <div id="dig-desc" style="padding:12px 20px 0;background:var(--dig-light)"><p style="font-size:12px;color:var(--gray-700);line-height:1.6;font-style:italic;border-left:3px solid var(--dig-mid);padding:8px 10px;background:rgba(255,255,255,.6);border-radius:0 4px 4px 0">Digitalisering verandert de manier waarop wij met klanten werken en hoe wij intern samenwerken. Fabory investeert actief in digitale tools en kanalen — niet als doel op zich, maar om onze klanten beter te bedienen en onze eigen efficiëntie te vergroten.\n\nVan de webshop en klantportalen tot e-procurement oplossingen en onze digitale werkplek in Microsoft 365 — de Inside Sales medewerker van vandaag moet digitaal vaardig zijn. Dat betekent niet alleen kunnen werken met de tools, maar ook begrijpen wat de meerwaarde is voor de klant en hoe je dit als commercieel argument inzet.\n\nWij verwachten van onze Inside Sales dat zij de digitale tools van Fabory kennen, deze actief inzetten in hun dagelijkse werk en klanten kunnen begeleiden in het gebruik ervan.</p></div>
+          <div id="digital-subcats"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAGE 7: FOUTEN & KNELPUNTEN -->
+    <div class="wizard-page" id="page-8">
+      <div class="section">
+        <div class="section-header"><div class="section-number">7</div><div class="section-title-text">Verbeterpunten & Knelpunten</div></div>
+        <div class="simple-card"><h3>Waar zie je voor jezelf de meeste ruimte voor verbetering? <span class="req">*</span></h3><div class="checkbox-group" id="fouten-checkboxes" style="grid-template-columns:1fr 1fr;max-width:500px"></div></div>
+        <div class="simple-card"><div class="field-group"><label>Wat kost je momenteel het meeste tijd?</label><textarea id="meeste-tijd" placeholder="Omschrijf kort…"></textarea></div></div>
+        <div class="simple-card"><div class="field-group"><label>Waar voel je je het minst zeker over richting de klant?</label><textarea id="minst-zeker" placeholder="Bijv. technische vragen, prijsafspraken…"></textarea></div></div>
+      </div>
+    </div>
+
+    <!-- PAGE 8: TRAINING & ANIMO -->
+    <div class="wizard-page" id="page-9">
+      <div class="section">
+        <div class="section-header"><div class="section-number">8</div><div class="section-title-text">Training & Ontwikkeling</div></div>
+        <div class="simple-card"><h3>Voor welke categorieën wil je actief training volgen? <span class="req">*</span></h3><div class="checkbox-group" id="training-checkboxes" style="grid-template-columns:1fr 1fr;max-width:500px"></div></div>
+        <div class="simple-card">
+          <h3>Hoe urgent is training voor jou? <span class="req">*</span></h3>
+          <div class="urgency-group">
+            <button class="urgency-btn low" data-value="Laag" onclick="selectUrgency(this)">🟢 Laag</button>
+            <button class="urgency-btn medium" data-value="Middel" onclick="selectUrgency(this)">🟡 Middel</button>
+            <button class="urgency-btn high" data-value="Hoog" onclick="selectUrgency(this)">🔴 Hoog</button>
+          </div>
+          <input type="hidden" id="urgentie">
+        </div>
+        <div class="simple-card">
+          <h3>Welke trainingsvorm heeft jouw voorkeur? <span class="req">*</span></h3>
+          <div class="voorkeur-group">
+            <button class="voorkeur-btn" data-value="Klassikaal" onclick="selectVoorkeur(this)">🏫 Klassikaal</button>
+            <button class="voorkeur-btn" data-value="Korte online sessie" onclick="selectVoorkeur(this)">💻 Online sessie</button>
+            <button class="voorkeur-btn" data-value="Beide" onclick="selectVoorkeur(this)">🔄 Beide</button>
+          </div>
+          <input type="hidden" id="voorkeur-vorm">
+        </div>
+        <div class="simple-card"><div class="field-group"><label>Aanvullende opmerkingen</label><textarea id="opmerkingen" placeholder="Heb je nog suggesties voor de planning?"></textarea></div></div>
+      </div>
+
+      <div class="error-msg" id="errorMsg">⚠️ Vul alle verplichte velden in voordat je verdergaat.</div>
+      <div class="submit-section">
+        <div class="submit-info">Je antwoorden worden als bestand gedownload.<br><strong>Stuur dit bestand daarna door naar je leidinggevende.</strong></div>
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">Verstuur & Download →</button>
+      </div>
+    </div>
+
+    <!-- WIZARD NAVIGATION -->
+    <div class="wizard-nav" id="wizardNav">
+      <button class="btn-prev" id="btnPrev" onclick="wizardPrev()">← Vorige</button>
+      <div class="wizard-steps" id="wizardSteps"></div>
+      <button class="btn-next" id="btnNext" onclick="wizardNext()">Volgende →</button>
+    </div>
+  </div>
+
+  <div class="success-screen" id="successScreen">
+    <div class="success-icon">✅</div>
+    <h2>Bedankt voor het invullen!</h2>
+    <p id="successMsg">Je antwoorden zijn opgeslagen.</p>
+    <button class="btn-submit" id="redownloadBtn" style="margin-top:16px;display:none" onclick="redownload()">⬇ Opnieuw downloaden</button>
+  </div>
+    <!-- WIZARD NAV -->
+    <div class="wizard-nav" id="wizardNav" style="display:none">
+      <button class="btn-prev" id="btnPrev" onclick="wizardPrev()">← Vorige</button>
+      <div class="wizard-steps" id="wizardSteps"></div>
+      <button class="btn-next" id="btnNext" onclick="wizardNext()">Volgende →</button>
+    </div>
+  </div>
+
+<script>
+const CATEGORIES = [
+  { id:'mif', label:'Masters in Fasteners', container:'mif-subcats', subs:[
+    {id:'mif_productkennis_f',  label:'Productkennis Fasteners',     tag:'Bevestigingstechnologie', desc:'Wij zijn de Masters in Fasteners! Wij onderscheiden ons doordat wij de specialist zijn in bevestigingstechnologie. Hoe staat het met jouw parate kennis op ons Fasteners pakket? Kan jij met vertrouwen onze klanten adviseren en vragen beantwoorden? Weet jij hoe het product eruit ziet, hoe je deze moet toepassen, wat de verschillen zijn tussen de materiaalsoorten? Wanneer gebruik je RVS i.p.v. staal, hoe ziet een "inbus" bout eruit of wat is Lubrinox?<br><br>Wij verwachten van onze Inside Sales dat zij de basiskennis van ons Fasteners assortiment beheersen en klanten zelfstandig kunnen adviseren over productsoorten, toepassingen en materiaalkeuze.'},
+    {id:'mif_productkennis_nf', label:'Productkennis Non-Fasteners', tag:'Gereedschap, PBM\'s, Chemie', desc:'Een Fastener monteert zichzelf niet en heeft bijvoorbeeld een moersleutel, schroevendraaier of een beetje Loctite nodig. Daarom bieden wij een groot pakket aan Non-Fasteners aan. Hoe staat het met jouw parate kennis op ons Non-Fasteners pakket? Weet jij wat onze klanten nodig hebben om onze producten te monteren, waar wij onze "Share of Wallet" kunnen uitbreiden met de juiste cross selling? Weet jij wat wij naast Fasteners nog meer te bieden hebben? Denk aan handgereedschap, verspanend gereedschap, Power Tools, Schuurmiddelen, PBM\'s en chemie.<br><br>Wij verwachten van onze Inside Sales dat zij ons Non-Fasteners assortiment kennen, actief kansen zien voor cross selling en de klant kunnen wijzen op aanvullende producten die aansluiten bij hun behoefte.'},
+    {id:'mif_marktkennis',      label:'Marktkennis',                 tag:'', desc:'Fabory begeeft zich in de uiterst diverse Technische markt. Maar weet jij deze markt goed te omschrijven en hoe wij in deze markt gepositioneerd zijn? Weet jij wat er speelt in de markt en welke invloeden van buitenaf de markt beïnvloeden (CBAM, oorlog, concurrentie)? De gemiddelde klant en benadering bestaat niet, dus hoe pakken wij dit aan bij Fabory?<br><br>Wij verwachten van onze Inside Sales dat zij de markt kennen, volgen en weten hoe wij als Fabory de diverse variaties van klanten benaderen.'},
+    {id:'mif_prijsopbouw',      label:'Prijsopbouw',                 tag:'', desc:'Fabory is een verkooporganisatie, dit houdt in dat wij producten inkopen bij onze leveranciers en verkopen aan onze klanten. Dit doen wij in Nederland met een assortiment met meer dan 150K artikelen aan bijna 100K klanten. Om onze prijzen op te bouwen hebben we diverse condities en instellingen. Denk aan Prijslijsten, kortingslijsten, UZK\'s, NPA\'s, wat is een MAP prijs, hoe bereken je de marge, welke kosten berekenen wij door, etc<br><br>Wij verwachten van onze Inside Sales dat zij de prijsopbouw van elk artikel, order of offerte begrijpen en daar waar nodig kunnen aanpassen om commercieel succesvol te zijn.'},
+    {id:'mif_oem_mro',          label:'Differentiatie OEM & MRO',    tag:'', desc:'Binnen de markt hebben wij een duidelijk onderscheid tussen onze OEM en MRO klanten. Deze twee takken binnen onze klantenportefeuille hebben wezenlijk andere behoeftes en vereisten. Weet jij de verschillen uit te leggen en de verschillende behoeften te omschrijven?<br><br>Wij verwachten van onze Inside Sales dat zij dit kunnen herkennen, beoordelen en toepassen.'},
+    {id:'mif_service',          label:'Service Selector',            tag:'Wat doen we voor welke klant', desc:'Fabory heeft een divers palet aan services. Niet elke service is voor elke klant relevant of van toegevoegde waarde. Daarom hebben wij als Fabory deze vastgelegd in onze service selector. Weet jij welke service bij welke klant past en hoe je dit gesprek voert?<br><br>Wij verwachten van onze Inside Sales dat zij de inhoud van de service selector kennen en deze weten toe te passen.'},
+  ]},
+  { id:'sap', label:'SAP', container:'sap-subcats', subs:[
+    {id:'sap_orders',        label:'Orders',                   tag:'VA01 – VA05 e.a.', transactions:[
+      {code:'VA01-03',desc:'Create, change & display sales order'},{code:'VA05',desc:'List of sales orders'},{code:'ZSD99',desc:'Open order report'},
+      {code:'ZSD121',desc:'Sales orders / contract blocked for delivery & RFR'},{code:'ZSD100',desc:'Customer/material info'},
+    ]},
+    {id:'sap_quotations',    label:'Quotations',               tag:'VA21 – VA25 e.a.', transactions:[
+      {code:'VA21-23',desc:'Create, change & display quotation'},
+      {code:'VA25',desc:'List of quotations'},{code:'ZQRP',desc:'Quotation report'},{code:'ZQUOM',desc:'Change quotation by material range'},
+      {code:'ZQUOH',desc:'Change quotation by history period'},{code:'ZQUOF',desc:'Change quotation by file-upload'},
+      {code:'ZSD98',desc:'Follow up quotations'},{code:'ZSD23',desc:'Action Report Quoting'},
+    ]},
+    {id:'sap_inquiries',     label:'Inquiries',                tag:'VA11 – VA15', transactions:[
+      {code:'VA11-13',desc:'Create, change & display inquiry'},{code:'VA15',desc:'List of inquiries'},
+    ]},
+    {id:'sap_customer_info', label:'Customer Info',            tag:'XD03, VD02 e.a.', transactions:[
+      {code:'XD03',desc:'Display customer'},{code:'VD02',desc:'Change customer'},{code:'ZVAC',desc:'Vacation period'},
+      {code:'Z0002',desc:'Create ship-to'},{code:'VV11',desc:'Create output sales'},{code:'VV12',desc:'Change output'},
+      {code:'ZEDI01',desc:'Maintain EDI profiles'},{code:'ZDNB_MASTER_DATA',desc:'D&B Master Data Check for customers'},
+      {code:'ZSD201',desc:'D&B – Financial Check (Update)'},{code:'ZDNB_PROPOSAL',desc:'Process D&B proposals'},
+    ]},
+    {id:'sap_article_info',  label:'Article Info',             tag:'MD04, MMBE e.a.', transactions:[
+      {code:'MD04',desc:'Display stock situation'},{code:'MM02',desc:'Change material'},{code:'MM03',desc:'Display material'},
+      {code:'VD52',desc:'Maintain cust mat info'},{code:'VD59',desc:'List cust material info'},{code:'ZSD17',desc:'Upload cust material info'},
+      {code:'ME23N',desc:'Display purchase order'},{code:'ME1M',desc:'Info record per material'},{code:'ME2M',desc:'Purchase orders by material'},
+      {code:'MMBE',desc:'Stock overview'},{code:'ZSPEC',desc:'Create special full'},{code:'ZSPEC4',desc:'Create special with reference'},
+      {code:'ZSPEC5',desc:'Create special for brands'},
+    ]},
+    {id:'sap_cust_mgmt',     label:'Cust Management',          tag:'MD02, ZCUST e.a.', transactions:[
+      {code:'MD02',desc:'MRP single-item'},{code:'ZPLO',desc:"RFQ's for planned orders"},{code:'ME57',desc:'Assign and process requisitions'},
+      {code:'ZCUST',desc:'Create cust material'},{code:'ZCUST4',desc:'Create cust material with reference'},{code:'ZCUST5',desc:'Create cust material for brands'},
+    ]},
+    {id:'sap_logic',         label:'Logic',                    tag:'ZSD86I, ZSD86M', transactions:[
+      {code:'ZSD86I',desc:'Create new customer bin-codes'},{code:'ZSD86M',desc:'Maintain bin-codes'},
+    ]},
+    {id:'sap_contracts',     label:'Contract Reservations',    tag:'VA41 – VA45 e.a.', transactions:[
+      {code:'VA41',desc:'Create contract reservation'},{code:'VA42',desc:'Change contract reservation'},
+      {code:'VA43',desc:'Display contract reservation'},{code:'VA45',desc:'List of contract reservations'},
+      {code:'SM35',desc:'Batch input monitoring'},{code:'ZLSMW',desc:'Closing and uploading CR'},
+    ]},
+    {id:'sap_quality',       label:'Quality Notifications',    tag:'QM01 – QM12', transactions:[
+      {code:'QM01',desc:'Create quality notification'},{code:'QM02',desc:'Change quality notification'},
+      {code:'QM03',desc:'Display quality notification'},{code:'QM10',desc:'Change list of QN'},{code:'QM12',desc:'Change list of QN tasks'},
+    ]},
+    {id:'sap_invoicing',     label:'Invoicing',                tag:'FB03, VF03 e.a.', transactions:[
+      {code:'FB03',desc:'Display invoice'},{code:'F.35',desc:'Credit master sheet'},{code:'VF03',desc:'Display billing document'},
+      {code:'VF05',desc:'List billing documents'},{code:'FBL5N',desc:'Open invoices'},
+    ]},
+    {id:'sap_purchase',      label:'Purchase',                 tag:'ME21N, ME22N, MB5T', transactions:[
+      {code:'ME21N',desc:'Create purchase order'},{code:'ME22N',desc:'Change purchase order'},{code:'MB5T',desc:'Stock in Transit'},
+    ]},
+    {id:'sap_pricing',       label:'Pricing',                  tag:'VK11 – VK13 e.a.', transactions:[
+      {code:'ZZCRP',desc:'Upload ZCRP'},{code:'VK11',desc:'Create price condition'},{code:'VK12',desc:'Change price condition'},
+      {code:'VK13',desc:'Display price condition'},
+    ]},
+    {id:'sap_tsc_logistics', label:'TSC Logistics',            tag:'ZCAN, VL01 e.a.', transactions:[
+      {code:'ZCAN',desc:'Transfer order scanning'},{code:'LT12',desc:'Confirm transfer order'},{code:'LT15',desc:'Cancelling transfer order'},
+      {code:'LT31',desc:'Print transfer order'},{code:'VL01',desc:'Create delivery'},{code:'VL02',desc:'Change delivery'},
+      {code:'VL06',desc:'Delivery Monitor'},{code:'VL09',desc:'Cancel Goods Issue for delivery'},{code:'VL10',desc:'Delivery list'},
+      {code:'MIGO',desc:'Goods movement'},
+    ]},
+    {id:'sap_tsc_inventory', label:'TSC Inventory Management', tag:'MI01 – ZTOCK e.a.', transactions:[
+      {code:'MI01',desc:'Create Physical Inventory Document'},{code:'MI02',desc:'Change Physical Inventory Document'},
+      {code:'MI04',desc:'Enter Inventory Count with Document'},{code:'MI07',desc:'Process List of Differences'},
+      {code:'MI20',desc:'Print List of Differences'},{code:'MI22',desc:'Display open inventory documents'},
+      {code:'ZTOCK',desc:'Stock'},{code:'ZSD80P',desc:'Barcode printing'},{code:'MB51',desc:'Material Doc List'},
+      {code:'ZLO55',desc:'Upload file to change storage bin location'},{code:'MB1A',desc:'Goods withdrawal (scrap)'},
+      {code:'MB1B',desc:'Transfer Posting'},{code:'MB1C',desc:'Other goods receipt'},
+    ]},
+    {id:'sap_queries',       label:'Queries',                  tag:'SQ01', transactions:[
+      {code:'SQ01',desc:'SAP Query'},
+    ]},
+  ]},
+  { id:'c4c', label:'C4C', container:'c4c-subcats', subs:[
+    {id:'c4c_algemeen',    label:'Algemeen',                   tag:'Filters, instellingen',
+     desc:'Jij kan de algemene functies binnen C4C uitleggen. Je begrijpt wat er allemaal op je startscherm staat, je weet hoe je moet navigeren tussen de diverse functionaliteiten, je weet hoe je persoonlijke instellingen zoals taal en emailhandtekening instelt. Jij weet wat er allemaal in een klantkaart staat en waar jouw benodigde informatie beschikbaar is<br><br>Wij verwachten van onze Inside Sales dat ze C4C in het algemene gebruik juist kunnen instellen en efficiënt kunnen gebruiken.'},
+    {id:'c4c_tickets',     label:'Ticketafhandeling',          tag:'',
+     desc:'Een groot deel van onze klantcommunicatie komt per email bij ons binnen. Al deze emails worden omgezet naar tickets in C4C. Ticketafhandeling is een zeer groot deel van het dagelijkse werk van de Inside Sales. Je weet hoe een ticket binnenkomt, wat bepaalt wie de ticket op naam krijgt en je kan het verschil uitleggen tussen een Dunning Ticket en Service Ticket. Jij kan persoonlijke filters aanmaken, zodat je alleen relevante taken en/of tickets ziet. En uiteindelijk weet je hoe je een ticket kunt afhandelen en welke afspraken hierover gemaakt zijn<br><br>Wij verwachten van onze Inside Sales dat ze dit weten en correct kunnen uitvoeren.'},
+    {id:'c4c_tasks',       label:'(Automated) Tasks',          tag:'',
+     desc:'Soms moet je een collega een taak geven. Indien het gaat om een actie die belangrijk genoeg is om te bewaren onder de klant, dan moet je een TASK aanmaken in C4C voor jouw collega. Daarnaast hebben we met alle informatie die wij opslaan in SAP en C4C voor al onze (duizenden) klanten, vaak moeite om met de juiste zaken bezig te zijn. Daarom hebben wij de "Automated Tasks" in het leven geroepen. Deze TASKS worden gekoppeld aan de (Inside) Sales om op een gestructureerde wijze onze klanten te bedienen. Weet jij hoe je een task kan aanmaken en/of verwerken? Wij verwachten dat onze Inside Sales dit kan.'},
+    {id:'c4c_opportunity', label:'Opportunity & Contactreg.',  tag:'Visits, phonecalls',
+     desc:'Onze buitendienst werkt ook in C4C. Zij registreren in C4C hun bezoeken, contactmomenten en opportunity\'s. Hierin vindt je vaak belangrijke informatie die van belang zijn voor jouw dagelijkse werkzaamheden. Weet jij wat jouw buitendienst registreert en hoe je dit kan vinden?<br><br>Wij verwachten van onze Inside Sales dat ze dit beheersen.'},
+  ]},
+  { id:'processen', label:'Processen', container:'processen-subcats', subs:[
+{id:'proc_local',  label:'Local Sourcing', tag:'',
+     desc:'Niet alle artikelen die onze klanten nodig hebben staan standaard in ons assortiment. Weet jij wat local sourcing inhoudt en wanneer je het inzet? Local sourcing betekent dat wij buiten ons vaste assortiment om artikelen inkopen, specifiek voor één klant of situatie. Dit vraagt om inzicht in het inkoopproces, kennis van onze leveranciersmarkt en een goede afstemming met inkoop<br><br>Wij verwachten van onze Inside Sales dat zij weten wanneer local sourcing van toepassing is, hoe zij dit proces in gang zetten en wat de impact is op levertijd en prijs.'},
+    {id:'proc_pricing',label:'Pricing', tag:'',
+     desc:'Fabory is een verkooporganisatie en een correcte prijs is de basis van elke transactie. Maar weet jij hoe een verkoopprijs tot stand komt en welke knoppen er zijn om deze aan te passen? Denk aan klantspecifieke prijsafspraken, kortingsstructuren, margeberekeningen en de rol van marktprijzen. Een goede Inside Sales medewerker begrijpt niet alleen wat een prijs is, maar ook waarom die zo is en hoe hij commercieel verantwoord bijgestuurd kan worden<br><br>Wij verwachten van onze Inside Sales dat zij de prijsopbouw begrijpen, dit kunnen uitleggen aan de klant en hier zelfstandig mee kunnen werken.'},
+    {id:'proc_logic',  label:'Logic', tag:'CMI & VAS',
+     desc:'Logic is een zeer belangrijk onderdeel in onze verkoopstrategie. Met onze logistieke dienstverlening zijn we verweven met het proces van onze klant en vormen we een band die zorgt voor structurele klantloyaliteit. Logic bieden wij aan als CMI- of VMI-oplossing.<br><br>Fabory Logic kent twee varianten: CMI (Customer Managed Inventory) en VMI (Vendor Managed Inventory). Bij CMI beheert de klant zelf de voorraad in zijn kasten via de MyFabory-app en vult deze zelf aan. Bij VMI ontzorgen wij de klant compleet. Wij beheren de voorraad ter plaatse en vullen deze automatisch aan, ondersteund door technologieën als RFID, Weight Scale Cabinets en Pick &amp; Put to Light.<br><br>Wij verwachten van onze Inside Sales dat zij weten wat onze Fabory Logic-oplossingen zijn, welke oplossing het beste past bij welke klant en hoe dit ingericht en geïmplementeerd dient te worden.'},
+    {id:'proc_sales',  label:'Sales & Samenwerking', tag:'Rollen, algemeen',
+     desc:'Inside Sales opereert niet alleen. Weet jij wie jouw directe collega\'s zijn, wat hun rol is en hoe jullie samenwerking eruitziet? Binnen Fabory werken Inside Sales, Outside Sales, Creditmanagement, Logistics en Operations nauw samen om de klant optimaal te bedienen. Een heldere rolverdeling en goede onderlinge communicatie zijn daarbij essentieel<br><br>Wij verwachten van onze Inside Sales dat zij hun eigen rol kennen, weten wat ze van collega\'s kunnen verwachten en actief bijdragen aan een soepele samenwerking.'},
+    {id:'proc_creditmanagement', label:'Creditmanagement', tag:'',
+     desc:'Creditmanagement is de afdeling binnen Fabory die verantwoordelijk is voor het beheer van klantkredieten, betalingstermijnen en openstaande facturen. Als Inside Sales werk jij dagelijks samen met deze afdeling. Weet jij wanneer je een klant doorverwijst naar Creditmanagement, wat een kredietlimiet is en hoe je omgaat met een geblokkeerde order? Een goede samenwerking tussen Inside Sales en Creditmanagement zorgt ervoor dat wij commercieel actief kunnen blijven zonder onnodig financieel risico te lopen<br><br>Wij verwachten van onze Inside Sales dat zij begrijpen hoe Creditmanagement werkt, wanneer zij deze afdeling inschakelen en hoe zij de klant hierover correct informeren.'},
+    {id:'proc_operations', label:'Operations', tag:'CWT & IOS',
+     desc:'Achter elke order die wij verwerken gaat een logistiek proces schuil. Weet jij hoe onze orders van SAP naar de klant komen en welke afdelingen daarin een rol spelen? Ons Centraal Magazijn Tilburg (CWT) is het hart van onze logistieke operatie — van hieruit beleveren wij al onze klanten. De afdeling International Operations Support (IOS) is de binnendienst van het CWT en ondersteunt bij complexe logistieke vraagstukken. Als Inside Sales ben jij het eerste aanspreekpunt voor de klant, ook bij leveringsvragen en afwijkingen<br><br>Wij verwachten van onze Inside Sales dat zij begrijpen hoe de logistieke keten werkt, wat de rol is van CWT en IOS en hoe zij hier effectief mee samenwerken.'},
+  ]},
+  { id:'digital', label:'Digital', container:'digital-subcats', subs:[
+{id:'dig_webservices', label:'Webservices', tag:'Webshop, MyFabory, Insights',
+     desc:'Fabory biedt klanten meerdere digitale kanalen om zaken met ons te doen. Weet jij welke webservices wij aanbieden en wat de meerwaarde is voor de klant? Denk aan onze webshop, het klantportaal MyFabory en Fabory Insights — een rapportagetool waarmee klanten inzicht krijgen in hun eigen aankoopgedrag. Digitale kanalen zijn niet alleen gemak voor de klant, maar ook een kans voor Inside Sales om de relatie te versterken en cross-selling te stimuleren<br><br>Wij verwachten van onze Inside Sales dat zij onze webservices kennen, klanten hierin kunnen begeleiden en de voordelen actief uitdragen.'},
+    {id:'dig_eprocure', label:'E-procurement', tag:'EDI & E-invoicing',
+     desc:'Steeds meer klanten willen hun inkoopproces volledig digitaal en geautomatiseerd afhandelen. Weet jij wat e-procurement inhoudt en welke oplossingen Fabory hiervoor biedt? EDI (Electronic Data Interchange) maakt het mogelijk om orders, orderbevestigingen en facturen automatisch uit te wisselen tussen de systemen van de klant en Fabory. E-invoicing zorgt voor een volledig digitaal factuurproces. Dit vraagt om technische kennis, maar ook om het vermogen om de klant te ontzorgen bij de implementatie<br><br>Wij verwachten van onze Inside Sales dat zij begrijpen wat EDI en e-invoicing zijn, wanneer dit relevant is voor een klant en hoe zij dit intern uitzetten.'},
+    {id:'dig_m365', label:'Microsoft 365', tag:'Teams, SharePoint, Office',
+     desc:'Microsoft 365 is de digitale werkplek van Fabory. Weet jij alle mogelijkheden te benutten die ons dagelijks werk efficiënter en slimmer maken? Denk aan Teams voor communicatie en samenwerking, SharePoint voor het delen en beheren van documenten, Outlook voor professionele klantcommunicatie en de Office-applicaties voor rapportages en analyses. Een goede beheersing van Microsoft 365 maakt jou niet alleen productiever, maar zorgt ook voor een professionelere klantervaring<br><br>Wij verwachten van onze Inside Sales dat zij Microsoft 365 effectief en volledig inzetten in hun dagelijkse werkzaamheden.'},
+  ]},
+];
+const ALL_SUBS = CATEGORIES.flatMap(c=>c.subs.map(s=>({...s,cat:c.label})));
+const NEED_OPTIONS = ['Klassikale training','Korte online sessie','Werkinstructie','Coaching','Geen behoefte'];
+const STAR_LABELS  = ['','Onvoldoende','Beperkt','Voldoende','Goed','Zeer goed'];
+const ZEK_LABELS   = ['','Onzeker','Enigszins zeker','Redelijk zeker','Zeker','Volledig zeker'];
+
+const state = { zekerheid:0, subcats:{} };
+
+// ── BUILD UI ──────────────────────────────────────────────────────
+function buildStars(containerId, labelId, fieldId, isZek) {
+  const c = document.getElementById(containerId);
+  for (let i=1;i<=5;i++) {
+    const btn = document.createElement('button');
+    btn.type='button'; btn.className='star-btn'; btn.textContent='★'; btn.dataset.value=i;
+    btn.onclick = () => {
+      if (isZek) { state.zekerheid=i; document.getElementById(labelId).textContent=ZEK_LABELS[i]; }
+      else { state.subcats[fieldId].score=i; document.getElementById(labelId).textContent=STAR_LABELS[i]; }
+      refreshStars(containerId,i); updateProgress();
+    };
+    c.appendChild(btn);
+  }
+}
+function refreshTransStars(cid, val) {
+  document.querySelectorAll(`#${cid} .trans-star-btn`).forEach(b=>b.classList.toggle('active',+b.dataset.value<=val));
+}
+function refreshStars(cid, val) {
+  document.querySelectorAll(`#${cid} .star-btn`).forEach(b=>b.classList.toggle('active',+b.dataset.value<=val));
+}
+
+function toggleTransStatus(subId, code, status) {
+  const safeCode = code.replace(/[^a-zA-Z0-9]/g,'_');
+  const ts = state.subcats[subId].transactions[code];
+  const unkBtn = document.getElementById(`tbtn-unk-${subId}-${safeCode}`);
+  const nvtBtn = document.getElementById(`tbtn-nvt-${subId}-${safeCode}`);
+  const lbl    = document.getElementById(`tlabel-${subId}-${safeCode}`);
+
+  if (ts.status === status) {
+    // toggle off
+    ts.status = '';
+    unkBtn?.classList.remove('selected-unknown');
+    nvtBtn?.classList.remove('selected-nvt');
+    lbl.textContent = ts.score ? STAR_LABELS[ts.score] : '';
+  } else {
+    ts.status = status;
+    ts.score  = 0;
+    refreshTransStars(`tstars-${subId}-${safeCode}`, 0);
+    unkBtn?.classList.toggle('selected-unknown', status==='onbekend');
+    nvtBtn?.classList.toggle('selected-nvt',     status==='nvt');
+    lbl.textContent = status === 'onbekend' ? 'Onbekend' : 'N.v.t.';
+  }
+  updateProgress();
+}
+
+function transactionsFilled(sub) {
+  if (!sub.transactions) return true;
+  // at least 1 transaction must have score or status set
+  return sub.transactions.some(t => {
+    const ts = state.subcats[sub.id].transactions[t.code];
+    return ts.score > 0 || ts.status !== '';
+  });
+}
+
+
+
+// ── WIZARD ────────────────────────────────────────────────────────
+const PAGES = [
+  { id:1, label:'Intro' },
+  { id:2, label:'Gegevens' },
+  { id:3, label:'MiF' },
+  { id:4, label:'SAP' },
+  { id:5, label:'C4C' },
+  { id:6, label:'Processen' },
+  { id:7, label:'Digital' },
+  { id:8, label:'Verbeterpunten' },
+  { id:9, label:'Training' },
+];
+const TOTAL_PAGES = PAGES.length;
+let currentPage = 1;
+const pageCompleted = {};
+
+const MAIN_CATS = [
+  { id:'mif',       label:'Masters in Fasteners', icon:'🏆' },
+  { id:'sap',       label:'SAP',                  icon:'🗄️' },
+  { id:'c4c',       label:'C4C',                  icon:'💬' },
+  { id:'processen', label:'Processen',             icon:'⚙️' },
+  { id:'digital',   label:'Digital',               icon:'🌐' },
+];
+
+function buildWizardSteps() {
+  const container = document.getElementById('wizardSteps');
+  if(!container) return;
+  PAGES.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'wstep' + (p.id === 1 ? ' active' : '');
+    el.id = `wstep-${p.id}`;
+    el.innerHTML = `<div class="wstep-dot">${p.id}</div><div class="wstep-label">${p.label}</div>`;
+    el.onclick = () => { if(p.id > 1) goToPage(p.id); };
+    container.appendChild(el);
+  });
+}
+
+function goToPage(n) {
+  const oldPage = document.getElementById(`page-${currentPage}`);
+  const oldStep = document.getElementById(`wstep-${currentPage}`);
+  if(oldPage) oldPage.classList.remove('active');
+  if(oldStep) { oldStep.classList.remove('active'); }
+  if(isPageValid(currentPage)) {
+    pageCompleted[currentPage] = true;
+    if(oldStep) { oldStep.classList.add('done'); oldStep.querySelector('.wstep-dot').textContent = '✓'; }
+  }
+  currentPage = n;
+  const newPage = document.getElementById(`page-${currentPage}`);
+  const newStep = document.getElementById(`wstep-${currentPage}`);
+  if(newPage) newPage.classList.add('active');
+  if(newStep) { newStep.classList.remove('done'); newStep.classList.add('active'); newStep.querySelector('.wstep-dot').textContent = n; }
+
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  const wizNav  = document.getElementById('wizardNav');
+  if(btnPrev) btnPrev.disabled = (currentPage <= 1);
+
+  // Hide nav on intro page, hide next on last page
+  const onIntro = (currentPage === 1);
+  const onLast  = (currentPage === TOTAL_PAGES);
+  if(wizNav)  wizNav.style.display  = onIntro ? 'none' : 'flex';
+  if(btnNext) btnNext.style.display = onLast  ? 'none' : 'inline-block';
+
+  updateProgress();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function wizardNext() {
+  if(currentPage === 1) { goToPage(2); return; }
+  if(!isPageValid(currentPage)) { showPageError(); return; }
+  clearPageError();
+  if(currentPage < TOTAL_PAGES) goToPage(currentPage + 1);
+}
+
+function wizardPrev() {
+  clearPageError();
+  if(currentPage > 1) goToPage(currentPage - 1);
+}
+
+function isPageValid(page) {
+  if(page === 1) return true;
+  if(page === 2) return ['naam','rol','email','ervaring','team'].every(id => document.getElementById(id)?.value.trim()) && state.zekerheid > 0;
+  if(page === 3) return CATEGORIES.find(c=>c.id==='mif').subs.every(s => state.subcats[s.id]?.score > 0);
+  if(page === 4) return CATEGORIES.find(c=>c.id==='sap').subs.every(s => transactionsFilled(s));
+  if(page === 5) return CATEGORIES.find(c=>c.id==='c4c').subs.every(s => state.subcats[s.id]?.score > 0);
+  if(page === 6) return CATEGORIES.find(c=>c.id==='processen').subs.every(s => state.subcats[s.id]?.score > 0);
+  if(page === 7) return CATEGORIES.find(c=>c.id==='digital').subs.every(s => state.subcats[s.id]?.score > 0);
+  if(page === 8) return document.querySelectorAll('#fouten-checkboxes .check-item.checked').length > 0;
+  if(page === 9) return document.getElementById('urgentie').value && document.getElementById('voorkeur-vorm').value && document.querySelectorAll('#training-checkboxes .check-item.checked').length > 0;
+  return true;
+}
+
+function showPageError() {
+  const errEl = document.getElementById('errorMsg');
+  if(errEl) { errEl.classList.add('visible'); errEl.scrollIntoView({behavior:'smooth',block:'center'}); }
+  const btn = document.getElementById('btnNext');
+  if(btn) { btn.style.background='#cc3333'; setTimeout(()=>btn.style.background='',600); }
+}
+
+function clearPageError() {
+  const errEl = document.getElementById('errorMsg');
+  if(errEl) errEl.classList.remove('visible');
+}
+
+function updateProgress() {
+  let done = 0;
+  for(let p = 1; p <= TOTAL_PAGES; p++) { if(isPageValid(p)) done++; }
+  const pct = Math.round(done / TOTAL_PAGES * 100);
+  const fill = document.getElementById('progFill');
+  const pctEl = document.getElementById('progPct');
+  const lbl   = document.getElementById('progressLabel');
+  if(fill)  fill.style.width = pct + '%';
+  if(pctEl) pctEl.textContent = pct + '%';
+  if(lbl)   lbl.textContent = `Stap ${currentPage} van ${TOTAL_PAGES}`;
+}
+
+function buildCheckboxes(cid) {
+  const c = document.getElementById(cid);
+  if(!c) return;
+  MAIN_CATS.forEach(cat => {
+    const el = document.createElement('label');
+    el.className = 'check-item'; el.dataset.value = cat.id;
+    el.innerHTML = `<span class="check-box"></span>${cat.icon} ${cat.label}`;
+    el.onclick = () => { el.classList.toggle('checked'); updateProgress(); };
+    c.appendChild(el);
+  });
+}
+
+
+buildWizardSteps();
+document.getElementById('btnPrev').disabled = true;
+
+buildStars('stars-zekerheid','star-label-zekerheid','zekerheid',true);
+
+function buildSubcats() {
+  CATEGORIES.forEach(cat => {
+    const container = document.getElementById(cat.container);
+    cat.subs.forEach(sub => {
+      // SAP subcats with transactions get special treatment
+      if (sub.transactions) {
+        state.subcats[sub.id] = { score:0, opmerking:'', behoefte:[], transactions:{} };
+        sub.transactions.forEach(t => {
+          state.subcats[sub.id].transactions[t.code] = { score:0, status:'' }; // status: ''|'onbekend'|'nvt'
+        });
+        const block = document.createElement('div');
+        block.className = 'subcat-block';
+
+        // Build transaction rows HTML — 2 per row
+        const transList = sub.transactions;
+        const transRows = transList.reduce((html, t, idx) => {
+          const safe = t.code.replace(/[^a-zA-Z0-9]/g,'_');
+          const cell = `
+            <td style="padding:6px 8px 6px 14px;white-space:nowrap;border-left:${idx%2===1?'1px solid var(--border)':'none'}">
+              <span class="trans-code">${t.code}</span>
+            </td>
+            <td style="padding:6px 6px;font-size:11px;color:var(--gray-700);min-width:90px;max-width:140px">
+              ${t.desc}
+            </td>
+            <td style="padding:5px 10px 5px 2px;white-space:nowrap">
+              <div class="trans-actions">
+                <div class="trans-stars" id="tstars-${sub.id}-${safe}"></div>
+                <button class="trans-extra-btn" id="tbtn-unk-${sub.id}-${safe}"
+                  onclick="toggleTransStatus('${sub.id}','${t.code}','onbekend')">?</button>
+                <button class="trans-extra-btn" id="tbtn-nvt-${sub.id}-${safe}"
+                  onclick="toggleTransStatus('${sub.id}','${t.code}','nvt')">n.v.t.</button>
+              </div>
+            </td>`;
+          if (idx % 2 === 0) {
+            // open new row; if last item and odd count, pad with empty cells
+            const isLast = idx === transList.length - 1;
+            return html + `<tr>${cell}${isLast ? '<td colspan="3" style="border-left:1px solid var(--border)"></td>' : ''}`;
+          } else {
+            // close row
+            return html + cell + '</tr>';
+          }
+        }, '');
+
+        block.innerHTML = `
+          <div class="subcat-header">
+            <span class="subcat-label">${sub.label}</span>
+            ${sub.tag ? `<span class="subcat-tag">${sub.tag}</span>` : ''}
+          </div>
+          <div style="padding:0 0 0 0">
+            <table class="trans-table"><tbody>${transRows}</tbody></table>
+          </div>
+          <div class="subcat-body">
+            <div class="subcat-field full">
+              <label>Trainings behoefte voor dit onderdeel</label>
+              <div class="need-buttons" id="need-${sub.id}">
+                ${NEED_OPTIONS.map(o=>`<button class="need-btn" data-value="${o}" onclick="toggleNeed('${sub.id}',this)">${o}</button>`).join('')}
+              </div>
+            </div>
+            <div class="subcat-field full">
+              <label>Knelpunten (optioneel)</label>
+              <textarea id="opmerking-${sub.id}" placeholder="Beschrijf concrete knelpunten…" rows="2"
+                oninput="state.subcats['${sub.id}'].opmerking=this.value;updateProgress()"></textarea>
+            </div>
+          </div>`;
+        container.appendChild(block);
+
+        // Build stars for each transaction
+        sub.transactions.forEach(t => {
+          const safeCode = t.code.replace(/[^a-zA-Z0-9]/g,'_');
+          const starsEl = document.getElementById(`tstars-${sub.id}-${safeCode}`);
+          for (let i=1; i<=5; i++) {
+            const btn = document.createElement('button');
+            btn.type='button'; btn.className='trans-star-btn'; btn.textContent='★'; btn.dataset.value=i;
+            btn.onclick = () => {
+              const ts = state.subcats[sub.id].transactions[t.code];
+              ts.score = i; ts.status = '';
+              refreshTransStars(`tstars-${sub.id}-${safeCode}`, i);
+              // deselect onbekend/nvt
+              document.getElementById(`tbtn-unk-${sub.id}-${safeCode}`)?.classList.remove('selected-unknown');
+              document.getElementById(`tbtn-nvt-${sub.id}-${safeCode}`)?.classList.remove('selected-nvt');
+              const lbl = STAR_LABELS[i] || '';
+              document.getElementById(`tlabel-${sub.id}-${safeCode}`).textContent = lbl;
+              updateProgress();
+            };
+            starsEl.appendChild(btn);
+          }
+        });
+        return; // skip default subcat build
+      }
+
+      // Default (non-SAP) subcat
+      state.subcats[sub.id] = {score:0, opmerking:'', behoefte:[]};
+      const block = document.createElement('div');
+      block.className='subcat-block';
+      block.innerHTML=`
+        <div class="subcat-header">
+          <span class="subcat-label">${sub.label}</span>
+          ${sub.tag?`<span class="subcat-tag">${sub.tag}</span>`:''}
+        </div>
+        ${sub.desc?`<div style="padding:0 20px 0;margin-bottom:4px"><p style="font-size:12px;color:var(--gray-500);line-height:1.6;font-style:italic;border-left:3px solid var(--red-light);padding:8px 10px;background:var(--gray-100);border-radius:0 4px 4px 0">${sub.desc}</p></div>`:''}
+        <div class="subcat-body">
+          <div class="subcat-field">
+            <label>Beheersing <span class="req">*</span></label>
+            <div class="star-display" id="stars-${sub.id}"></div>
+            <div class="star-label-text" id="star-label-${sub.id}"></div>
+          </div>
+          <div class="subcat-field">
+            <label>Trainings behoefte</label>
+            <div class="need-buttons" id="need-${sub.id}">
+              ${NEED_OPTIONS.map(o=>`<button class="need-btn" data-value="${o}" onclick="toggleNeed('${sub.id}',this)">${o}</button>`).join('')}
+            </div>
+          </div>
+          <div class="subcat-field full">
+            <label>Knelpunten (optioneel)</label>
+            <textarea id="opmerking-${sub.id}" placeholder="Beschrijf concrete knelpunten…" rows="2"
+              oninput="state.subcats['${sub.id}'].opmerking=this.value;updateProgress()"></textarea>
+          </div>
+        </div>`;
+      container.appendChild(block);
+      buildStars(`stars-${sub.id}`,`star-label-${sub.id}`,sub.id,false);
+    });
+  });
+}
+
+function toggleNeed(id,btn) {
+  btn.classList.toggle('selected');
+  const arr=state.subcats[id].behoefte, val=btn.dataset.value, idx=arr.indexOf(val);
+  if(idx===-1) arr.push(val); else arr.splice(idx,1);
+  updateProgress();
+}
+
+const MAIN_CATS = [
+  { id:'mif',       label:'Masters in Fasteners', icon:'🏆' },
+  { id:'sap',       label:'SAP',                  icon:'🗄️' },
+  { id:'c4c',       label:'C4C',                  icon:'💬' },
+  { id:'processen', label:'Processen',             icon:'⚙️' },
+  { id:'digital',   label:'Digital',               icon:'🌐' },
+];
+
+function buildCheckboxes(cid) {
+  const c = document.getElementById(cid);
+  MAIN_CATS.forEach(cat => {
+    const el = document.createElement('label');
+    el.className = 'check-item'; el.dataset.value = cat.id;
+    el.innerHTML = `<span class="check-box"></span>${cat.icon} ${cat.label}`;
+    el.onclick = () => { el.classList.toggle('checked'); updateProgress(); };
+    c.appendChild(el);
+  });
+}
+buildCheckboxes('fouten-checkboxes');
+buildCheckboxes('training-checkboxes');
+
+function selectUrgency(btn) {
+  document.querySelectorAll('.urgency-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected'); document.getElementById('urgentie').value=btn.dataset.value;
+  updateProgress();
+}
+function selectVoorkeur(btn) {
+  document.querySelectorAll('.voorkeur-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected'); document.getElementById('voorkeur-vorm').value=btn.dataset.value;
+  updateProgress();
+}
+
+// ── PROGRESS ──────────────────────────────────────────────────────
+function updateProgress() {
+  // Count completed pages
+  let done = 0;
+  for(let p = 1; p <= TOTAL_PAGES; p++) { if(isPageValid(p)) done++; }
+  const pct = Math.round(done / TOTAL_PAGES * 100);
+  document.getElementById('progFill').style.width = pct + '%';
+  document.getElementById('progPct').textContent = pct + '%';
+  // Also update page label in progress bar
+  document.getElementById('progressLabel').textContent = `Stap ${currentPage} van ${TOTAL_PAGES}`;
+}
+
+// ── VALIDATE ──────────────────────────────────────────────────────
+function validate() {
+  if(!document.getElementById('naam').value.trim()) return false;
+  if(!document.getElementById('rol').value.trim()) return false;
+  if(!document.getElementById('email').value.trim()) return false;
+  if(!document.getElementById('ervaring').value) return false;
+  if(!document.getElementById('team').value) return false;
+  if(state.zekerheid===0) return false;
+  for(const cat of CATEGORIES) {
+    for(const sub of cat.subs) {
+      if(sub.transactions) { if(!transactionsFilled(sub)) return false; }
+      else { if(!state.subcats[sub.id]?.score) return false; }
+    }
+  }
+  if(!document.getElementById('urgentie').value) return false;
+  if(!document.getElementById('voorkeur-vorm').value) return false;
+  if(document.querySelectorAll('#training-checkboxes .check-item.checked').length===0) return false;
+  return true;
+}
+
+// ── COLLECT ───────────────────────────────────────────────────────
+function collectData() {
+  const row = {
+    naam: document.getElementById('naam').value.trim(),
+    rol:  document.getElementById('rol').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    team: document.getElementById('team').value,
+    ervaring: document.getElementById('ervaring').value,
+    zekerheid_score: state.zekerheid,
+  };
+  CATEGORIES.forEach(cat=>cat.subs.forEach(sub=>{
+    const s = state.subcats[sub.id];
+    if (sub.transactions) {
+      // store per-transaction as JSON string
+      row[sub.id+'_transactions'] = JSON.stringify(s.transactions);
+      // compute avg score for dashboard (ignore nvt/onbekend)
+      const scores = sub.transactions.map(t=>s.transactions[t.code]).filter(t=>t.score>0).map(t=>t.score);
+      row[sub.id+'_score'] = scores.length ? (scores.reduce((a,b)=>a+b)/scores.length).toFixed(1) : 0;
+    } else {
+      row[sub.id+'_score'] = s.score;
+    }
+    row[sub.id+'_behoefte']  = s.behoefte.join(' | ');
+    row[sub.id+'_opmerking'] = s.opmerking;
+  }));
+  row.fouten = [...document.querySelectorAll('#fouten-checkboxes .check-item.checked')].map(e=>e.dataset.value).join(' | ');
+  row.meeste_tijd = document.getElementById('meeste-tijd').value.trim();
+  row.minst_zeker_klant = document.getElementById('minst-zeker').value.trim();
+  row.training_gewenst = [...document.querySelectorAll('#training-checkboxes .check-item.checked')].map(e=>e.dataset.value).join(' | ');
+  row.urgentie = document.getElementById('urgentie').value;
+  row.voorkeur_vorm = document.getElementById('voorkeur-vorm').value;
+  row.opmerkingen = document.getElementById('opmerkingen').value.trim();
+  row.timestamp = new Date().toLocaleString('nl-NL');
+  return row;
+}
+
+// ── CONFIGURATIE ─────────────────────────────────────────────────
+// Pas deze 2 regels aan naar jouw SharePoint omgeving
+const SHAREPOINT_SITE = 'https://fabory.sharepoint.com/sites/NLSalesSMEVAS';
+const SHAREPOINT_LIST = 'FaboryEnqueteResultaten';
+
+// ── SUBMIT ────────────────────────────────────────────────────────
+async function submitForm() {
+  if(!validate()) {
+    const e=document.getElementById('errorMsg');
+    e.classList.add('visible');
+    e.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  document.getElementById('errorMsg').classList.remove('visible');
+  document.getElementById('submitBtn').disabled=true;
+
+  const data = collectData();
+
+  // Try SharePoint first, fall back to CSV download
+  const saved = await saveToSharePoint(data);
+
+  if(saved) {
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('successScreen').classList.add('visible');
+    document.getElementById('successMsg').textContent = 'Je antwoorden zijn opgeslagen in SharePoint. Je hoeft niets meer te doen.';
+    document.getElementById('redownloadBtn').style.display='none';
+  } else {
+    // Fallback: CSV download
+    downloadCSV(data);
+    document.getElementById('formContent').style.display='none';
+    document.getElementById('successScreen').classList.add('visible');
+    document.getElementById('successMsg').innerHTML = 'SharePoint opslag niet beschikbaar.<br>Je antwoorden zijn als bestand gedownload — stuur dit door naar je leidinggevende.';
+    document.getElementById('redownloadBtn').style.display='inline-block';
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+async function saveToSharePoint(data) {
+  try {
+    // Get request digest (CSRF token) for SharePoint REST API
+    const digestResp = await fetch(`${SHAREPOINT_SITE}/_api/contextinfo`, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json;odata=nometadata', 'Content-Type': 'application/json' },
+      credentials: 'include',
+    });
+    if(!digestResp.ok) return false;
+    const digestData = await digestResp.json();
+    const digest = digestData.FormDigestValue;
+
+    // Build SharePoint list item
+    const item = {
+      '__metadata': { 'type': `SP.Data.${SHAREPOINT_LIST}ListItem` },
+      'Naam':           data.naam,
+      'Rol':            data.rol,
+      'Email':          data.email,
+      'Team':           data.team,
+      'Ervaring':       data.ervaring,
+      'ZekerheidScore': data.zekerheid_score,
+      'Urgentie':       data.urgentie,
+      'VoorkeurVorm':   data.voorkeur_vorm,
+      'TrainingGewenst':data.training_gewenst,
+      'Opmerkingen':    data.opmerkingen,
+      'Timestamp':      data.timestamp,
+      'ResultatenJSON': JSON.stringify(data),
+    };
+
+    const resp = await fetch(`${SHAREPOINT_SITE}/_api/web/lists/getbytitle('${SHAREPOINT_LIST}')/items`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json;odata=nometadata',
+        'Content-Type': 'application/json;odata=nometadata',
+        'X-RequestDigest': digest,
+      },
+      credentials: 'include',
+      body: JSON.stringify(item),
+    });
+    return resp.ok;
+  } catch(e) {
+    console.warn('SharePoint save failed:', e);
+    return false;
+  }
+}
+
+function downloadCSV(data) {
+  const headers = Object.keys(data);
+  const values  = Object.values(data).map(v=>`"${String(v).replace(/"/g,'""')}"`);
+  const csv = '\uFEFF' + headers.join(';') + '\n' + values.join(';');
+  const filename = `fabory_enquete_${data.naam.replace(/\s+/g,'_')}_${new Date().toISOString().slice(0,10)}.csv`;
+  window._lastCsv = csv; window._lastFilename = filename;
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href=url; a.download=filename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function redownload() {
+  if(!window._lastCsv) return;
+  const blob = new Blob([window._lastCsv], {type:'text/csv;charset=utf-8;'});
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href=url; a.download=window._lastFilename;
+  document.body.appendChild(a); a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+['naam','rol','email'].forEach(id=>document.getElementById(id).addEventListener('input',updateProgress));
+['ervaring','team'].forEach(id=>document.getElementById(id).addEventListener('change',updateProgress));
+updateProgress();
+
+// ── INIT ──────────────────────────────────────────────────────────
+function initApp() {
+  buildWizardSteps();
+  buildStars('stars-zekerheid','star-label-zekerheid','zekerheid',true);
+  buildSubcats();
+  buildCheckboxes('fouten-checkboxes');
+  buildCheckboxes('training-checkboxes');
+  ['naam','rol','email'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('input', updateProgress);
+  });
+  ['ervaring','team'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.addEventListener('change', updateProgress);
+  });
+  updateProgress();
+}
+
+if(document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
+</script>
+</body>
+</html>
